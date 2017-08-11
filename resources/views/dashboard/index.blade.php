@@ -106,7 +106,7 @@
           </a>
         </li>
         <li >
-           <a  href="article.php">
+           <a  href="{{url('/articles')}}">
             <i class="glyphicon glyphicon-edit"></i> <span>Article</span>
           </a>
         </li>

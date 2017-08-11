@@ -36,9 +36,20 @@ Route::get('/dashboardA', 'UserController@toAdmin');
 
  Route::post('/users','UserController@updateAdmin');
 
+ Route::get('/categories','CategorieController@index');
+
 Route::post('/categories','CategorieController@store');
 
-Route::get('/categories','CategorieController@index');
+Route::delete('/categories/{id}','CategorieController@destroy');
 
+Route::put('/categories/{id}','CategorieController@update');
+
+Route::get('/articles','ArticleController@index');
+
+Route::post('/articles','ArticleController@store');
+
+Route::delete('/articles/{id}','ArticleController@destroy');
+
+Route::put('/articles/{id}','ArticleController@update');
 
  

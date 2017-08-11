@@ -6,7 +6,6 @@
             
 
 <ul class="list-group">
-      
 <!-- debut button li kaytala3 pop up-->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="float: left;">ADD Categorie </button>
             <br>
@@ -78,7 +77,9 @@
 
 
 <tbody>  
+<?php $i = 0; ?>
 @foreach($listCategorie as $categorie)
+<?php $i++; ?>
        <tr>
        <!--Ref article  title Description Price link of article date de publication categorie image Action-->
        <td><center>{{$categorie->title_categorie}}</center></td>
@@ -88,23 +89,78 @@
           <td> <!--<center><ul class="list-group">    
               <a onclick="return(confirm('Etes-vous sûr de vouloir supprimer?'));" href="#" style="color:red"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>           
   			 </ul></center>-->
-  			  <form action="{{url('/categorie/'.$categorie->id_categorie)}}" method="POST">
+  			  <form action="{{url('/categories/'.$categorie->id)}}" method="POST">
 			
 			          {{ csrf_field() }}
 					  
 					  {{ method_field('DELETE') }}
 
-					 <center><ul class="list-group">    
-              <button type="submit" onclick="return(confirm('Etes-vous sûr de vouloir supprimer?'));"  style="color:red;border:0;background:transparent;"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>  
-               <a ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>                  
+					<ul class="list-group">    
+              <button type="submit" onclick="return(confirm('Etes-vous sûr de vouloir supprimer?'));"  style="color:red;border:0;background:transparent;"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> 
+            <a  class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#exampleModal<?php echo $i; ?>" data-whatever="@mdo" style="float: left;"></a>
+
+           
   			 </ul>
+        
 
 
              
        
          
-         </center>
+        
    </form>
+    <ul class="list-group">
+      
+<!-- debut button li kaytala3 pop up-->
+            <br>
+<!-- fin button li kaytala3 pop up-->
+                <div class="modal fade" id="exampleModal<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                   <div class="modal-dialog" role="document">
+                     <div class="modal-content">
+                        <div class="modal-header">
+<!-- debut button close pop up li lfo9-->
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></br>
+<!-- fin button close pop up li lfo9 -->
+                          <center><h4 class="list-group-item list-group-item-info" id="exampleModal<?php echo $i; ?>" style="color: black"> Update</h4></center>
+                        </div>
+<!-- debut body pop up-->
+
+
+            
+           
+                        <div class="modal-body">
+      <form enctype="multipart/form-data"  action="{{url('/categories/'.$categorie->id)}}" method="POST" >
+
+                                {{ csrf_field() }}
+
+                                 {{ method_field('PUT') }}
+
+                          <div class="form-group">
+                                <label for="recipient-name" class="control-label">Title:</label>
+                                <input required class="form-control" id="message-text" name="title" type="text" value="{{$categorie->title_categorie}}">
+                            </div>
+                             
+                                      <div class="form-group">
+                              
+                                <input type="hidden" required class="form-control" id="message-text" name="id" value="{{$categorie->id}}" >
+                            </div>
+
+                            <div>
+                               <img alt='' src="{{asset('storage/'.$categorie->image_categorie)}}" style="width: 90px;height: 70px" />
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">image:</label>
+                                <input  class="form-control" id="message-text" name="image1" type="file">
+                            </div>
+ 
+                            <div class="modal-footer">
+                              <button type="submit" class="btn btn-primary" name="valider">update</button>
+                            </div>
+                          </form>
+                       </div>
+   
+<!-- fin pop up-->
+   </ul>              
        
          </td>
        </tr>

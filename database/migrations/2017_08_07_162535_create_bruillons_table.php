@@ -14,12 +14,12 @@ class CreateBruillonsTable extends Migration
     public function up()
     {
         Schema::create('bruillons', function (Blueprint $table) {
-            $table->increments('id_bruillon');
+            $table->increments('id');
             $table->string('title_bruillon');
             $table->text('contenu_bruillon');
            $table->boolean('Etat');
            $table->integer('page_id')->unsigned();
-            $table->foreign('page_id')->references('id_page')->on('pages');
+            $table->foreign('page_id')->references('id')->on('pages');
             $table->timestamps();
         });
     }
