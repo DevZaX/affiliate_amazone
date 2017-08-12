@@ -15,6 +15,8 @@ class CategorieController extends Controller
        $categorie= new Categorie();
 	   $categorie->title_categorie = $request->input("title");
 
+
+
      if($request->hasFile('image')){
            $categorie->image_categorie = $request->image->store('image');
      }
@@ -42,6 +44,8 @@ class CategorieController extends Controller
       $id = $request->input("id");
        $categorie =Categorie::find($id);
        $categorie->title_categorie = $request->input("title");
+
+       //dd($request->file('image1')->getMimeType());
 
      if($request->hasFile('image1')){
       $categorie->image_categorie =  $request->file('image1')->store('image');

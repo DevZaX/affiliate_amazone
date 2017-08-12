@@ -19,6 +19,9 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
+  <script src="//cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
@@ -110,10 +113,17 @@
             <i class="glyphicon glyphicon-edit"></i> <span>Article</span>
           </a>
         </li>
-        <li >
+        <li class="treeview">
           <a href="#">
-            <i class="glyphicon glyphicon-list-alt"></i> <span>Pages</span>
+            <i class="glyphicon glyphicon-new-window"></i> <span>pages</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="{{url('/create')}}"><i class="fa fa-circle-o"></i>Add Page</a></li>
+            <li><a href="{{url('/pages')}}"><i class="fa fa-circle-o"></i> Pages</a></li>
+          </ul>
         </li>
         <li >
           <a href="#">
@@ -184,6 +194,7 @@
 <script src='{{asset("js/back/adminlte.min.js")}}'></script>
 <!-- AdminLTE for demo purposes -->
 <script src='{{asset("js/back/demo.js")}}'></script>
+
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()

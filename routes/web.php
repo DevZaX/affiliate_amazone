@@ -52,4 +52,10 @@ Route::delete('/articles/{id}','ArticleController@destroy');
 
 Route::put('/articles/{id}','ArticleController@update');
 
+Route::get('/create','PageController@create');
+
+Route::post('/pages','PageController@store');
+
+Route::get('/pages','PageController@index');
+
  
