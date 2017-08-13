@@ -22,6 +22,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
   <script src="//cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
