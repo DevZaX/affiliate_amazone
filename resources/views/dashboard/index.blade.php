@@ -24,7 +24,7 @@
   <!-- standar-->
   <!-- <script src="//cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script> -->
   <!-- full -->
-
+      <script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script>
 
 
 </head>
@@ -190,7 +190,6 @@
 <!-- jQuery 3 -->
 <script src='{{asset("js/back/jquery.min.js")}}'></script>
 
-<script type="text/javascript" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
 <!-- Bootstrap 3.3.7 -->
 <script src='{{asset("js/back/bootstrap.min.js")}}'></script>

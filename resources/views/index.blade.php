@@ -75,7 +75,7 @@
           </button>
 
           <a id="logo" class="navbar-brand" href="index.html">
-            <h1><img class="img-responsive" src="images/lg1.png" alt="logo" ></h1>
+            <h1><img  src="images/lg1.png" alt="logo" ></h1>
           </a>                    
         </div>
         <div class="collapse navbar-collapse">
@@ -126,20 +126,20 @@ My Wishlist
       </div> 
     </div>
 
-
-
+@if(count($listCategorie) != 0)
+@foreach($listCategorie as $categorie)
     <div class="container">
       <div class="row" >
         <div class="col-sm-4 " style="margin-bottom:50px;">
           <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="400ms">
             <div class="folio-image">
-              <img class="img-responsive"  src="images/3.jpg" alt="" style="width:300px;height:250px;">
+              <img class="img-responsive"  src="{{asset('storage/'.$categorie->image_categorie)}}" alt="" style="width:300px;height:250px;">
             </div>
             <div class="overlay">
               <div class="overlay-content">
                 <div class="overlay-text">
                   <div class="folio-info">
-                    <h3>Gifts for man</h3>
+                    <h3>{{$categorie->title_categorie}}</h3>
                   
                   </div>
                   <div class="folio-overview">
@@ -151,91 +151,11 @@ My Wishlist
             </div>
           </div>
         </div>
-        <div class="col-sm-4" style="margin-bottom:50px;">
-          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="500ms">
-            <div class="folio-image">
-              <img class="img-responsive" src="images/women.jpg" alt="" style="width:300px;height:250px;">
-            </div>
-            <div class="overlay">
-              <div class="overlay-content">
-                <div class="overlay-text">
-                  <div class="folio-info">
-                    <h3>Gifts for women</h3>
-                   
-                  </div>
-                  <div class="folio-overview">
-                    <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
-                   
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4" style="margin-bottom:50px;">
-          <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="600ms">
-            <div class="folio-image">
-              <img class="img-responsive"  src="images/geeky.jpg" alt="" style="width:300px;height:250px;" >
-            </div>
-            <div class="overlay">
-              <div class="overlay-content">
-                <div class="overlay-text">
-                  <div class="folio-info">
-                    <h3>Geeky stuff</h3>
-               
-                  </div>
-                  <div class="folio-overview">
-                    <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
-                   
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4" style="margin-bottom:50px;">
-          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="700ms">
-            <div class="folio-image">
-              <img class="img-responsive" src="images/gift.jpg" alt="" style="width:300px;height:250px;">
-            </div>
-            <div class="overlay">
-              <div class="overlay-content">
-                <div class="overlay-text">
-                  <div class="folio-info">
-                    <h3>Gifts Under 20$</h3>
-              
-                  </div>
-                  <div class="folio-overview">
-                    <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
-                   
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
+        
+        @endforeach
        
-        <div class="col-sm-4" style="margin-bottom:50px;">
-          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="900ms">
-            <div class="folio-image">
-              <img class="img-responsive" src="images/gear.jpg" alt="" style="width:300px;height:250px;">
-            </div>
-            <div class="overlay">
-              <div class="overlay-content">
-                <div class="overlay-text">
-                  <div class="folio-info">
-                    <h3>Gear & Gadgets</h3>
-              
-                  </div>
-                  <div class="folio-overview">
-                    <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
-                   
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+       
         <div class="col-sm-4" style="margin-bottom:50px;">
           <div class="folio-item wow fadeInLeftBig"   data-wow-duration="1000ms" data-wow-delay="1000ms" style="border:2px solid:red;">
             <div class="folio-image">
@@ -246,6 +166,12 @@ My Wishlist
         </div>
       </div>
     </div>
+    @else 
+     <p>  nothing to show </p>
+
+     @endif
+
+
 
     <div id="portfolio-single-wrap">
       <div id="portfolio-single">
@@ -308,204 +234,57 @@ w3.slideshow(".nature",1500);
       <div class="blog-posts">
         <div class="row">
 
+        @if(count($listArticle) == 0)
+             <p>nothing to show</p>
+        @else     
 
+@foreach($listArticle as $article)
           <div class="col-sm-4 wow " style="margin-bottom:50px;" >
             <div class="post-thumb">
-              <a href="#"><img class="img-responsive" src="images/blog/1.jpg" alt=""></a> 
+              <a href="#"><img class="img-responsive" src="{{asset('storage/'.$article->image_article)}}" alt="" ></a> 
               <div class="post-meta">
-                <span><i class="fa fa-comments-o"></i> 3 Comments</span>
+                
                 <span><i class="fa fa-heart"></i> 0 Likes</span> 
               </div>
              
             </div>
             <div class="entry-header">
-              <h3><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
-              <span class="date">June 26, 2014</span>
-              <span class="cetagory">in <strong>Photography</strong></span>
+              <h3><a href="#">{{$article->title_article}}</a></h3>
+              <span class="date">{{$article->created_at}}</span>
+              <span class="cetagory">in <strong>{{$article->categorie->title_categorie}}</strong></span>
             </div>
             <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              <p>{{$article->description_article}}</p>
             </div>
              <div>
-            <button style="float:right;width:30%;" class="btn btn-primary">click</button>
+            <a href="{{$article->link}}" style="float:right;width:30%;" class="btn btn-primary" target="_blank">Check Out</a>
             </div>
           </div>
 
-          <div class="col-sm-4 wow " style="margin-bottom:50px;" >
-            <div class="post-thumb">
-              <a href="#"><img class="img-responsive" src="images/blog/1.jpg" alt=""></a> 
-              <div class="post-meta">
-                <span><i class="fa fa-comments-o"></i> 3 Comments</span>
-                <span><i class="fa fa-heart"></i> 0 Likes</span> 
-              </div>
-             
-            </div>
-            <div class="entry-header">
-              <h3><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
-              <span class="date">June 26, 2014</span>
-              <span class="cetagory">in <strong>Photography</strong></span>
-            </div>
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
-             <div>
-            <button style="float:right;width:30%;" class="btn btn-primary">click</button>
-            </div>
-          </div>
+@endforeach
 
-          <div class="col-sm-4 wow " style="margin-bottom:50px;" >
-            <div class="post-thumb">
-              <a href="#"><img class="img-responsive" src="images/blog/1.jpg" alt=""></a> 
-              <div class="post-meta">
-                <span><i class="fa fa-comments-o"></i> 3 Comments</span>
-                <span><i class="fa fa-heart"></i> 0 Likes</span> 
-              </div>
-             
-            </div>
-            <div class="entry-header">
-              <h3><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
-              <span class="date">June 26, 2014</span>
-              <span class="cetagory">in <strong>Photography</strong></span>
-            </div>
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
-            <div>
-            <button style="float:right;width:30%;" class="btn btn-primary">click</button>
-            </div>
-          </div>
+        @endif
+        
 
-  <div class="col-sm-4 wow "  style="margin-bottom:50px;" >
-            <div class="post-thumb">
-              <a href="#"><img class="img-responsive" src="images/blog/1.jpg" alt=""></a> 
-              <div class="post-meta">
-                <span><i class="fa fa-comments-o"></i> 3 Comments</span>
-                <span><i class="fa fa-heart"></i> 0 Likes</span> 
-              </div>
-             
-            </div>
-            <div class="entry-header">
-              <h3><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
-              <span class="date">June 26, 2014</span>
-              <span class="cetagory">in <strong>Photography</strong></span>
-            </div>
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
-            <div>
-            <button style="float:right;width:30%;" class="btn btn-primary">click</button>
-            </div>
-          </div>
+        
 
-  <div class="col-sm-4 wow " style="margin-bottom:50px;" >
-            <div class="post-thumb">
-              <a href="#"><img class="img-responsive" src="images/blog/1.jpg" alt=""></a> 
-              <div class="post-meta">
-                <span><i class="fa fa-comments-o"></i> 3 Comments</span>
-                <span><i class="fa fa-heart"></i> 0 Likes</span> 
-              </div>
-             
-            </div>
-            <div class="entry-header">
-              <h3><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
-              <span class="date">June 26, 2014</span>
-              <span class="cetagory">in <strong>Photography</strong></span>
-            </div>
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
-            <div>
-            <button style="float:right;width:30%;" class="btn btn-primary">click</button>
-            </div>
-          </div>
 
-  <div class="col-sm-4 wow " style="margin-bottom:50px;">
-            <div class="post-thumb">
-              <a href="#"><img class="img-responsive" src="images/blog/1.jpg" alt=""></a> 
-              <div class="post-meta">
-                <span><i class="fa fa-comments-o"></i> 3 Comments</span>
-                <span><i class="fa fa-heart"></i> 0 Likes</span> 
-              </div>
-             
-            </div>
-            <div class="entry-header">
-              <h3><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
-              <span class="date">June 26, 2014</span>
-              <span class="cetagory">in <strong>Photography</strong></span>
-            </div>
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
-            <div>
-            <button style="float:right;width:30%;" class="btn btn-primary">click</button>
-            </div>
-          </div>
+
+         
+
+
+
+ 
+
+
+
+
 
 
 <div id="readmore" style="display:none;">
- <div class="col-sm-4  " style="margin-bottom:50px;" >
-            <div class="post-thumb">
-              <a href="#"><img class="img-responsive" src="images/blog/1.jpg" alt=""></a> 
-              <div class="post-meta">
-                <span><i class="fa fa-comments-o"></i> 3 Comments</span>
-                <span><i class="fa fa-heart"></i> 0 Likes</span> 
-              </div>
-             
-            </div>
-            <div class="entry-header">
-              <h3><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
-              <span class="date">June 26, 2014</span>
-              <span class="cetagory">in <strong>Photography</strong></span>
-            </div>
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
-            <div>
-            <button style="float:right;width:30%;" class="btn btn-primary">click</button>
-            </div>
-          </div>
-           <div class="col-sm-4  " style="margin-bottom:50px;" >
-            <div class="post-thumb">
-              <a href="#"><img class="img-responsive" src="images/blog/1.jpg" alt=""></a> 
-              <div class="post-meta">
-                <span><i class="fa fa-comments-o"></i> 3 Comments</span>
-                <span><i class="fa fa-heart"></i> 0 Likes</span> 
-              </div>
-             
-            </div>
-            <div class="entry-header">
-              <h3><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
-              <span class="date">June 26, 2014</span>
-              <span class="cetagory">in <strong>Photography</strong></span>
-            </div>
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
-            <div>
-            <button style="float:right;width:30%;" class="btn btn-primary">click</button>
-            </div>
-          </div>
-           <div class="col-sm-4  " style="margin-bottom:50px;">
-            <div class="post-thumb">
-              <a href="#"><img class="img-responsive" src="images/blog/1.jpg" alt=""></a> 
-              <div class="post-meta">
-                <span><i class="fa fa-comments-o"></i> 3 Comments</span>
-                <span><i class="fa fa-heart"></i> 0 Likes</span> 
-              </div>
-             
-            </div>
-            <div class="entry-header">
-              <h3><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
-              <span class="date">June 26, 2014</span>
-              <span class="cetagory">in <strong>Photography</strong></span>
-            </div>
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
-            <div>
-            <button style="float:right;width:30%;" class="btn btn-primary">click</button>
-            </div>
-          </div>
+
+
+
 </div>
          
 

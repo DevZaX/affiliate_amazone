@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/','FrontController@index');
 
 Route::post('/', 'UserController@register');
 

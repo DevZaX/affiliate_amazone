@@ -59,10 +59,7 @@
          
         
    </form>
-    <ul class="list-group">
-      
-<!-- debut button li kaytala3 pop up-->
-            <br>
+ 
 <!-- fin button li kaytala3 pop up-->
                 <div class="modal fade" id="exampleModal<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                    <div class="modal-dialog modal-lg" role="document">
@@ -112,7 +109,7 @@
        
          </td>
        </tr>
-       <script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script>
+
           <script>
                             CKEDITOR.replace(
                                        "content<?php echo $i; ?>",
