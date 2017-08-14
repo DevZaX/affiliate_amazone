@@ -3,17 +3,15 @@
 @section('content')
 
 
-
-
-
  <div class="warper container-fluid" >
     
       <div class="row">
+
             <div class="col-md-14 col-md-offset-0" >
               
-               
                <div class="panel-body">
        </br>
+
        <div>
 
 
@@ -21,7 +19,7 @@
          th{color:white;}
        </style>
 @if(count($listPage) != 0 )
-       <center> <table  class="table table-bordered table table-hover" style="width:70%">
+       <center> <table  id="data" class="table table-bordered table table-hover" style="width:70%">
            <thead>
                 <tr >
                        <th id="tdcolor" style="width:85%;background-color: RGB(40,96,144); !important  " ><center>title</center></th> 
@@ -67,7 +65,7 @@
             <br>
 <!-- fin button li kaytala3 pop up-->
                 <div class="modal fade" id="exampleModal<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                   <div class="modal-dialog" role="document">
+                   <div class="modal-dialog modal-lg" role="document">
                      <div class="modal-content">
                         <div class="modal-header">
 <!-- debut button close pop up li lfo9-->
@@ -81,6 +79,9 @@
             
            
                         <div class="modal-body">
+
+                        <!-- update page -->
+
       <form enctype="multipart/form-data"  action="{{url('/pages/'.$page->id)}}" method="POST" >
 
                                 {{ csrf_field() }}
@@ -94,11 +95,9 @@
                             <div class="form-group">
                                 <label for="recipient-name" class="control-label">Contenu :</label>
                             
-                                <textarea required class="form-control" id="message-text" name="contenu" max="250" > {{ $page->contenu }}</textarea>
+                                <textarea required class="form-control" id="content<?php echo $i; ?>" name="contenu" max="250" > {{ $page->contenu }}</textarea>
 
-                                 <script>
-                            CKEDITOR.replace( "contenu" );
-                </script>
+                               
                             </div> 
                           
  
@@ -113,6 +112,15 @@
        
          </td>
        </tr>
+       <script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script>
+          <script>
+                            CKEDITOR.replace(
+                                       "content<?php echo $i; ?>",
+                                       {
+
+                                       }
+                              );
+                </script>
 @endforeach
 
 </tbody>
@@ -130,6 +138,8 @@
 
 
    </div>
+
+
 
 
 @endsection 

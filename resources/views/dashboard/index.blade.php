@@ -16,12 +16,16 @@
 
    <link rel="stylesheet" href='{{asset("css/back/AdminLTE.min.css")}}'>
   <link rel="stylesheet" href='{{asset("css/back/_all-skins.min.css")}}'>
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
-  <script src="//cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <!-- standar-->
+  <!-- <script src="//cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script> -->
+  <!-- full -->
+
+
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -185,6 +189,9 @@
 
 <!-- jQuery 3 -->
 <script src='{{asset("js/back/jquery.min.js")}}'></script>
+
+<script type="text/javascript" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
 <!-- Bootstrap 3.3.7 -->
 <script src='{{asset("js/back/bootstrap.min.js")}}'></script>
 <!-- SlimScroll -->
@@ -196,10 +203,18 @@
 <!-- AdminLTE for demo purposes -->
 <script src='{{asset("js/back/demo.js")}}'></script>
 
+
+
+
+
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
   })
 </script>
+<script type="text/javascript">
+  $('#data').dataTable();
+</script>
+ 
 </body>
 </html>

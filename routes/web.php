@@ -58,4 +58,8 @@ Route::post('/pages','PageController@store');
 
 Route::get('/pages','PageController@index');
 
+Route::delete('/pages/{id}','PageController@destroy');
+
+Route::put('/pages/{id}','PageController@update');
+
  
