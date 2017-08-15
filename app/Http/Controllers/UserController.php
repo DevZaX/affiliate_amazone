@@ -24,14 +24,16 @@ class UserController extends Controller
 
       $inputs = Input::all();
 
+
+
       $validation = Validator::make($inputs,[
 
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed',
-            'checkbox' =>'required',
+            'term' =>'required',
         ]);
 
-      
+
 
       if($validation->fails()){
 
