@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
-  <meta name="csrf-token" content="{{ csrf_token() }}" />
+   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>1Affiliate Amazon</title>
   <link href='{{asset("css/front/bootstrap.min.css")}}' rel="stylesheet">
 
@@ -74,7 +74,7 @@
             <span class="icon-bar"></span>
           </button>
 
-          <a id="logo" class="navbar-brand" href="index.html">
+          <a id="logo" class="navbar-brand" href="{{url('/')}}">
             <h1><img  src="images/lg1.png" alt="logo" ></h1>
           </a>                    
         </div>
@@ -85,28 +85,29 @@
             <li class="scroll menuhover"><a href="#services">Articles</a></li>
             <li class="scroll menuhover"><a href="#about-us">About Us</a></li> 
 
-            @if(Session::has("existe"))
+          <!--
              <li class="scroll menuhover"> <a href="#"  data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">
 My Wishlist
              </a></li>
+             -->
            
-             @else
+          
                <li class="scroll menuhover"> <a href="#"  data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">Login
              </a></li>
              <li class="scroll menuhover">   <a href="#"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Register</a></li>
 
-             @endif
+            
          
 
             
             <li class="scroll menuhover"><a href="#contact">Contact</a></li> 
-            @if(Session::has("existe"))
+            <!--
            <li class="menuhover">  <form method="post" action="{{url('/logout')}}" id="formulaire">
              {{ csrf_field() }}
             <a href="#" onclick="document.getElementById('formulaire').submit()">Log Out</a>
             </form></li> 
 
-               @endif
+              -->
           </ul>
         </div>
       </div>
@@ -182,7 +183,7 @@ My Wishlist
 
 
 
-  <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms" data-wow-delay="300ms">
+  <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" >
           <h2>Best Deals</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>
         </div>
@@ -249,7 +250,12 @@ w3.slideshow(".nature",1500);
              
             </div>
             <div class="entry-header">
-              <h3><a href="#">{{$article->title_article}}</a></h3>
+             <h4 style="float: right;">{{$article->price}}</h4>
+              <h3><a href="{{$article->link}}">{{$article->title_article}}</a></h3>
+
+              
+
+
               <span class="date">{{$article->created_at}}</span>
               <span class="cetagory">in <strong>{{$article->categorie->title_categorie}}</strong></span>
             </div>
@@ -265,20 +271,6 @@ w3.slideshow(".nature",1500);
 
         @endif
         
-
-        
-
-
-
-         
-
-
-
- 
-
-
-
-
 
 
 <div id="readmore" style="display:none;">
@@ -391,7 +383,7 @@ w3.slideshow(".nature",1500);
     </div>
   </footer>
 
-
+<!-- fr -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
@@ -399,21 +391,27 @@ w3.slideshow(".nature",1500);
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="exampleModalLabel">Create Account</h4>
+        <div id="sucess" style="color: green;"></div>
       </div>
       <div class="modal-body">
-        <form  id="register" action="{{ route('register') }}" method="post">
+    
+        <form   class="form" action="" method="post">
       
       <div class="form-group has-feedback">
+
         <input type="email" class="form-control" placeholder="Email" name="email" id="email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <div id="emailv" style="color: red;"></div>
       </div>
+
        {{ csrf_field() }}
       <div class="form-group has-feedback">
         <input type="password" class="form-control" placeholder="Password" name="password" id="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <div id="passwordv" style="color: red;"></div>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Retype password" name="retype" id="retype">
+        <input type="password" class="form-control" placeholder="Retype password" name="password_confirmation" id="retype">
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
       <div class="row">
@@ -422,11 +420,12 @@ w3.slideshow(".nature",1500);
             <label>
               <input type="checkbox" name="term" id="term"> I agree to the <a href="#">terms</a>
             </label>
+            <div id="checkboxv" style="color: red;"></div>
           </div>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button  type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+          <button  type="button" id="Register" class="btn btn-primary btn-block btn-flat">Register</button>
         </div>
         <!-- /.col -->
       </div>
@@ -476,19 +475,6 @@ w3.slideshow(".nature",1500);
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   <script type="text/javascript" src='{{asset("js/front/jquery.js")}}'></script>
   <script type="text/javascript" src='{{asset("js/front/bootstrap.min.js")}}'></script>
 
@@ -505,6 +491,44 @@ w3.slideshow(".nature",1500);
   $('#read').click(function(){
      $('#readmore').css("display","block");
   });
+</script>
+
+<script type="text/javascript">
+$.ajaxSetup({
+          headers:{
+          'X-CSRF-TOKEN':'{!! csrf_token() !!}'
+      }
+      });
+
+    $('#Register').click(function(){
+      
+         var data = $('.form').serialize();
+         $('#emailv').text('');
+        $('#passwordv').text('');
+         $('#checkboxv').text('');
+         $('#sucess').text('');
+         $.ajax({
+
+                  url:'/',
+                  type:'post',
+                  data:data,
+                  success:function(seccessData){
+                   
+                      $('#sucess').append('<p>'+seccessData+'</p>')
+                   },
+                  error:function(errorData){
+                     var message = errorData.responseJSON.message;
+                     if(message.email != null)
+                          $('#emailv').append('<p>'+message.email[0]+'</p>')
+                     if(message.password != null)   
+                          $('#passwordv').append('<p>'+message.password[0]+'</p>')
+                    if(message.checkbox != null) 
+                          $('#checkboxv').append('<p>'+message.checkbox[0]+'</p>')
+
+                   }
+     
+   });
+    });
 </script>
 
 

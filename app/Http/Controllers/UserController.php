@@ -6,35 +6,47 @@ use Illuminate\Http\Request;
 
 use App\User;
 
+use Validator;
+
+ use Response;
+
 use DB;
 
+use Illuminate\Support\Facades\Input;
+
 use Session;
+
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function register(Request $request){
-           
-           $email = $request["email"];
-           $password = $request["password"];
-           $retype = $request["retype"];
-           $term = $request["term"];  
-           $user = DB::table('users')->where('email',$email)->get();
-           if(count($user) == 0){
-           	    if($password == $retype){
-           	    	if($term == "on"){
-           	    		 $password = md5($password);
-                    $user = new User();
-                    $user->email = $email;
-                    $user->password = $password;
-                    $user->type = "client";
-                    $user->save();
-                   // Session::flash("success","account created successfuly");
 
-           	    	}
-           	    }
-           }
+      $inputs = Input::all();
+
+      $validation = Validator::make($inputs,[
+
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|confirmed',
+            'checkbox' =>'required',
+        ]);
+
+      
+
+      if($validation->fails()){
+
+return Response::json(["error"=>true,'message'=>$validation->messages()],400);
+        }
+
+           
+          $user = new User();
+          $user->type="client";
+          $user->email=inputs['email'];
+          $user->password=Hash::make("inputs['password']");
+          $user->save();
+          return 'your are registred successfuly';
    
-           return redirect('/');
+           
     }
 
     public function login(Request $request){
