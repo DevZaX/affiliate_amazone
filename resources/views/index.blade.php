@@ -79,36 +79,44 @@
           </a>                    
         </div>
         <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">                 
+         <form method="post" action="{{url('/logout')}}" id="formulaire"> 
+          <ul class="nav navbar-nav navbar-right"> 
+
             <li class="scroll menuhover"><a href="#home">Home</a></li>
             <li class="scroll menuhover"><a href="#portfolio">Categories</a></li>               
             <li class="scroll menuhover"><a href="#services">Articles</a></li>
             <li class="scroll menuhover"><a href="#about-us">About Us</a></li> 
+  @if(Auth::check())
 
-          <!--
+         
              <li class="scroll menuhover"> <a href="#"  data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">
-My Wishlist
+       My Wishlist
              </a></li>
-             -->
-           
+         @else    
           
                <li class="scroll menuhover"> <a href="#"  data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">Login
              </a></li>
              <li class="scroll menuhover">   <a href="#"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Register</a></li>
 
-            
-         
 
+
+       @endif     
+         
+ @if(Auth::check())
             
             <li class="scroll menuhover"><a href="#contact">Contact</a></li> 
-            <!--
-           <li class="menuhover">  <form method="post" action="{{url('/logout')}}" id="formulaire">
+             <li class="menuhover">  
              {{ csrf_field() }}
             <a href="#" onclick="document.getElementById('formulaire').submit()">Log Out</a>
-            </form></li> 
+            </li> 
+@endif
 
-              -->
+            
+          
+
+              
           </ul>
+          </form>
         </div>
       </div>
     </div><!--/#main-nav-->
@@ -123,6 +131,10 @@ My Wishlist
       <div class="row">
         <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
           <h2 style="margin-bottom:-100px;">Our Categories</h2>
+          @if(Session::has('succes'))
+
+          {{Session::get('succes')}}
+          @endif
         </div>
       </div> 
     </div>
@@ -425,7 +437,7 @@ w3.slideshow(".nature",1500);
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button  type="submit" id="Register" class="btn btn-primary btn-block btn-flat">Register</button>
+          <button  type="button" id="Register" class="btn btn-primary btn-block btn-flat">Register</button>
         </div>
         <!-- /.col -->
       </div>
@@ -447,14 +459,14 @@ w3.slideshow(".nature",1500);
        <form action="{{url('/login')}}" method="post">
 
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <input type="email" class="form-control" placeholder="Email" name="email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
 
        {{ csrf_field() }}
 
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" class="form-control" placeholder="Password"  name="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -514,7 +526,7 @@ $.ajaxSetup({
                   data:data,
                   success:function(seccessData){
                    
-                      $('#sucess').append('<p>'+seccessData+'</p>')
+                      $('#sucess').append('<p>'+'your are registred successfuly'+'</p>')
                    },
                   error:function(errorData){
                      var message = errorData.responseJSON.message;

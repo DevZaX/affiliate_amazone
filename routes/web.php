@@ -15,7 +15,7 @@ Route::get('/','FrontController@index');
 
 Route::post('/', 'UserController@register');
 
-Route::post('/login', 'UserController@login');
+Route::post('/login', 'UserController@check');
 
 Route::post('/logout', 'UserController@logout');
 
@@ -25,7 +25,7 @@ Route::post('/logout', 'UserController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/dashboardA', 'UserController@toAdmin');
+
 
 
  Route::get('/users','UserController@index');
@@ -59,5 +59,11 @@ Route::get('/pages','PageController@index');
 Route::delete('/pages/{id}','PageController@destroy');
 
 Route::put('/pages/{id}','PageController@update');
+
+ Route::groupe(['before'=>'auth'],function()){
+
+ 	Route::get('/dashboardA', 'UserController@toAdmin');
+
+ }
 
  

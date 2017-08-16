@@ -14,6 +14,8 @@ use DB;
 
 use Illuminate\Support\Facades\Input;
 
+use Illuminate\Support\Facades\Auth;
+
 use Session;
 
 use Illuminate\Support\Facades\Hash;
@@ -23,9 +25,6 @@ class UserController extends Controller
     public function register(Request $request){
 
       $inputs = Input::all();
-
-
-
      
          $validator = Validator::make($request->all(), [
             'email' => 'required|email|max:255|unique:users',
@@ -34,47 +33,60 @@ class UserController extends Controller
             'term'=>''
         ]);
 
-         dd($validator->fails());
+       
 
         if ($validator->fails()) {
-           return Response::json(["error"=>true,'message'=>$validation->messages()],400);
+           return Response::json(["error"=>true,'message'=>$validator->messages()],400);
         }
 
            
           $user = new User();
           $user->type="client";
-          $user->email=inputs['email'];
-          $user->password=Hash::make("inputs['password']");
+          $user->email = $inputs['email'];
+          $user->password = Hash::make($inputs['password']);
           $user->save();
-          return 'your are registred successfuly';
+        
    
            
     }
 
-    public function login(Request $request){
-      if(!Session::has('login')){
-        $email = $request['email'];
-            $password = $request["password"];
-            $users = DB::table('users')->where('email',$email)->where('password',md5($password));
-            if(count($users) != 0){
-             Session::put("existe","yes");
-             Session::put("login","yes");
-            }
-      }
-            
-            return view('index');
-    }
+  public  function  check(){
+  $inputs = Input::all();
+ 
+
+   $validator = Validator::make( $inputs,[
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+ 
+   if ($validator->fails()) {
+            return redirect('/');
+        }else
+
+     $email= $inputs['email'];
+     $password =$inputs['password'];
+          if(Auth::attempt(['email'=>$email,'password'=>$password])){
+
+            return redirect('/');
+         
+          }else{
+            return redirect('/');
+          }
+
+          
+
+}
+
 
     public function logout(){
-      Session::forget('existe');
-      Session::flush();
-      return redirect('/');
+     Auth::logout();
+     return redirect('/');
     }
 
 public function toAdmin(){
   return view('dashboard.index');
 }
-
 
 public function index(){
 
