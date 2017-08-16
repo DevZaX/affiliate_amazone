@@ -425,7 +425,7 @@ w3.slideshow(".nature",1500);
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button  type="button" id="Register" class="btn btn-primary btn-block btn-flat">Register</button>
+          <button  type="submit" id="Register" class="btn btn-primary btn-block btn-flat">Register</button>
         </div>
         <!-- /.col -->
       </div>
