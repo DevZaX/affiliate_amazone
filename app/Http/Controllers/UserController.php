@@ -25,6 +25,8 @@ class UserController extends Controller
     public function register(Request $request){
 
       $inputs = Input::all();
+
+
      
          $validator = Validator::make($request->all(), [
             'email' => 'required|email|max:255|unique:users',
@@ -36,7 +38,8 @@ class UserController extends Controller
        
 
         if ($validator->fails()) {
-           return Response::json(["error"=>true,'message'=>$validator->messages()],400);
+          
+              return Response::json(["error"=>true,'message'=>$validator->messages()],400);
         }
 
            
@@ -121,5 +124,37 @@ public function updateAdmin(Request $request){
                  $user->save();
                  return redirect('/users');
  }
+
+public function loginAdmin(){
+  return view('login-admin');
+}
+
+public function loginAdminAuth(Request $request){
+ 
+ $inputs = $request->all();
+
+ $validator = Validator::make( $inputs,[
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+ if($validator->fails()){
+  return redirect('/login-admin');
+ }else{
+     $email= $inputs['email'];
+     $password =$inputs['password'];
+
+          if(Auth::attempt(['email'=>$email,'password'=>$password])){
+
+            return redirect('/dashboardA');
+         
+          }else{
+            return redirect('/login-admin');
+          }
+ }
+
+
+  
+}
   
 }

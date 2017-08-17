@@ -1,4 +1,5 @@
 <?php
+use App\Http\Middleware\AuthAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,7 +63,11 @@ Route::put('/pages/{id}','PageController@update');
 
  
 
- 	Route::get('/dashboardA', 'UserController@toAdmin');
+Route::get('/dashboardA', 'UserController@toAdmin')->middleware(AuthAdmin::class);
+
+Route::get('loginAdmin','UserController@loginAdmin');
+
+Route::post('login-admin','UserController@loginAdminAuth');
 
 
 
