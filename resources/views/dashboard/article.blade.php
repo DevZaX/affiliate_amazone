@@ -1,16 +1,18 @@
 @extends('dashboard.index')
 @section('content')
-  <div class="warper container-fluid">
-          
-            <div class="page-header"></h1></div>
-            
 
-<ul class="list-group">
-<!-- debut button li kaytala3 pop up-->
+  <div class="warper container-fluid">
+     <div class="page-header"></h1></div>
+
+     
+            <ul class="list-group">
+            <!-- debut button li kaytala3 pop up-->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="float: left;">ADD Article</button>
             <br>
-<!-- fin button li kaytala3 pop up-->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+
+            <!-- fin button li kaytala3 pop up-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                    <div class="modal-dialog" role="document">
                      <div class="modal-content">
                         <div class="modal-header">

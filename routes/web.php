@@ -60,10 +60,10 @@ Route::delete('/pages/{id}','PageController@destroy');
 
 Route::put('/pages/{id}','PageController@update');
 
- Route::groupe(['before'=>'auth'],function()){
+ 
 
  	Route::get('/dashboardA', 'UserController@toAdmin');
 
- }
+
 
  
