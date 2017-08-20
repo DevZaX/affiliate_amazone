@@ -32,14 +32,19 @@ class UserController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed',
             'confirmed_password'=>'',
-            'term'=>''
+            'term'=>'required'
         ]);
 
-       
+
+    
+   
 
         if ($validator->fails()) {
-          
+
+             
               return Response::json(["error"=>true,'message'=>$validator->messages()],400);
+
+
         }
 
            

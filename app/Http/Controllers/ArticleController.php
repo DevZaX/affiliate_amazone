@@ -81,12 +81,12 @@ public function AfficheCategorie($title){
 
 public function getArticlesAjax(Request $request){
              $id = $request->id;
-             $listArticle = Article::where('id','>',$id)->orderBy('id')->limit(6)->get();
+             $listArticle = Article::where('id','<',$id)->orderBy('id','DESC')->limit(6)->get();
              $out = '';
              if(count($listArticle) != 0){
               foreach($listArticle as $article){
                             $out = $out .'
-                             <div class="col-sm-4 wow " style="margin-bottom:50px;" >
+                             <div class="col-sm-4 wow article-div" style="margin-bottom:50px;" >
             <div class="post-thumb">
               <a href="#"><img class="img-responsive" src="storage/'.$article->image_article.'" alt="" ></a> 
               <div class="post-meta">
@@ -95,7 +95,7 @@ public function getArticlesAjax(Request $request){
               </div>
              
             </div>
-            <div class="entry-header">
+            <div class="entry-header" style="height: 120px">
              <h4 style="float: right;">'.$article->price.'</h4>
               <h3><a href="'.$article->link.'">'.$article->title_article.'</a></h3>
 
@@ -105,7 +105,7 @@ public function getArticlesAjax(Request $request){
               <span class="date">'.$article->created_at.'</span>
               <span class="cetagory">in <strong>'.$article->categorie->title_categorie.'</strong></span>
             </div>
-            <div class="entry-content">
+            <div class="entry-content" style="height: 200px">
               <p>'.$article->description_article.'</p>
             </div>
              <div>

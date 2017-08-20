@@ -24,46 +24,48 @@ Route::post('/logout', 'UserController@logout');
 
 
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 
 
 
- Route::get('/users','UserController@index');
 
- Route::delete('/users/{id}','UserController@destroy');
+ Route::get('/users','UserController@index')->middleware(AuthAdmin::class);; //admin
 
- Route::post('/users','UserController@updateAdmin');
+ Route::delete('/users/{id}','UserController@destroy')->middleware(AuthAdmin::class);; //admin
 
- Route::get('/categories','CategorieController@index');
+ Route::post('/users','UserController@updateAdmin')->middleware(AuthAdmin::class);; //admin
 
-Route::post('/categories','CategorieController@store');
+ Route::get('/categories','CategorieController@index')->middleware(AuthAdmin::class);; //admin
 
-Route::delete('/categories/{id}','CategorieController@destroy');
+Route::post('/categories','CategorieController@store')->middleware(AuthAdmin::class);; //admin
 
-Route::put('/categories/{id}','CategorieController@update');
+Route::delete('/categories/{id}','CategorieController@destroy')->middleware(AuthAdmin::class);; //admin
 
-Route::get('/articles','ArticleController@index');
+Route::put('/categories/{id}','CategorieController@update')->middleware(AuthAdmin::class);; //admin
 
-Route::post('/articles','ArticleController@store');
+Route::get('/articles','ArticleController@index')->middleware(AuthAdmin::class);; //admin
 
-Route::delete('/articles/{id}','ArticleController@destroy');
+Route::post('/articles','ArticleController@store')->middleware(AuthAdmin::class);; //admin
 
-Route::put('/articles/{id}','ArticleController@update');
+Route::delete('/articles/{id}','ArticleController@destroy')->middleware(AuthAdmin::class);; //admin
 
-Route::get('/create','PageController@create');
+Route::put('/articles/{id}','ArticleController@update')->middleware(AuthAdmin::class);; //admin
 
-Route::post('/pages','PageController@store');
+Route::get('/create','PageController@create')->middleware(AuthAdmin::class);; //admin
 
-Route::get('/pages','PageController@index');
+Route::post('/pages','PageController@store')->middleware(AuthAdmin::class);; //admin
 
-Route::delete('/pages/{id}','PageController@destroy');
+Route::get('/pages','PageController@index')->middleware(AuthAdmin::class);; //admin
 
-Route::put('/pages/{id}','PageController@update');
+Route::delete('/pages/{id}','PageController@destroy')->middleware(AuthAdmin::class);; //admin
+
+Route::put('/pages/{id}','PageController@update')->middleware(AuthAdmin::class);; //admin
 
  
 
-Route::get('/dashboardA', 'UserController@toAdmin')->middleware(AuthAdmin::class);
+Route::get('/dashboardA', 'UserController@toAdmin')->middleware(AuthAdmin::class); //admin
+
+
 
 Route::get('loginAdmin','UserController@loginAdmin');
 
@@ -73,8 +75,10 @@ Route::get('/articles/{title}','ArticleController@AfficheCategorie');
 
 Route::get('/pages/{title}','PageController@AffichePage');
 
-Route::post('/getArticlesAjax','ArticleController@getArticlesAjax');
 
+
+
+Route::post('/getArticlesAjax','ArticleController@getArticlesAjax');
 
 
 

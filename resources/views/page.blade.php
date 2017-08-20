@@ -1,5 +1,6 @@
 @extends('master')
 @section('content')
+
     <section>
 
 
@@ -7,9 +8,8 @@
 
 
        <div class="cont"> 
-
    {!! $page->contenu !!}
-</div>
+      </div>
        
 
     </section>

@@ -118,8 +118,8 @@ w3.slideshow(".nature",1500);
         @else     
 
 @foreach($listArticle as $article)
-          <div class="col-sm-4 wow " style="margin-bottom:50px;" >
-            <div class="post-thumb">
+          <div class="col-sm-4 wow article-div "  style="margin-bottom:50px;" >
+            <div class="post-thumb"  >
               <a href="#"><img class="img-responsive" src="{{asset('storage/'.$article->image_article)}}" alt="" ></a> 
               <div class="post-meta">
                 
@@ -127,7 +127,7 @@ w3.slideshow(".nature",1500);
               </div>
              
             </div>
-            <div class="entry-header">
+            <div class="entry-header" style="height: 120px">
              <h4 style="float: right;">{{$article->price}}</h4>
               <h3><a href="{{$article->link}}">{{$article->title_article}}</a></h3>
 
@@ -137,24 +137,17 @@ w3.slideshow(".nature",1500);
               <span class="date">{{$article->created_at}}</span>
               <span class="cetagory">in <strong>{{$article->categorie->title_categorie}}</strong></span>
             </div>
-            <div class="entry-content">
+            <div class="entry-content" style="height: 200px">
               <p>{{$article->description_article}}</p>
             </div>
              <div>
-            <a href="{{$article->link}}" style="float:right;width:30%;" class="btn btn-primary" target="_blank">Check Out</a>
+            <a href="{{$article->link}}" style="float:right;width:30%;position: relative;" class="btn btn-primary" target="_blank">Check Out</a>
             </div>
           </div>
 
 @endforeach
 
-      
-        
-
-
-
-         
-
-                      
+    
         </div>
         <div class="load-more wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
           <a  id="read" class="btn-loadmore" data-id="{{$article->id}}"><i class="fa fa-repeat"></i> Load More</a>

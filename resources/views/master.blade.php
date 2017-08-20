@@ -96,7 +96,7 @@
 
 
 <script type="text/javascript">
-$.ajaxSetup({
+      $.ajaxSetup({
           headers:{
           'X-CSRF-TOKEN':'{!! csrf_token() !!}'
       }
@@ -106,26 +106,28 @@ $.ajaxSetup({
       
          var data = $('.form').serialize();
          $('#emailv').text('');
-        $('#passwordv').text('');
+         $('#passwordv').text('');
          $('#checkboxv').text('');
          $('#sucess').text('');
-         $.ajax({
+
+        $.ajax({
 
                   url:'/',
                   type:'post',
                   data:data,
                   success:function(seccessData){
                    
-                      $('#sucess').append('<p>'+'your are registred successfuly'+'</p>')
+                      $('#sucess').append('<p>'+'you are registred successfuly'+'</p>')
                    },
                   error:function(errorData){
                      var message = errorData.responseJSON.message;
+                     
                      if(message.email != null)
                           $('#emailv').append('<p>'+message.email[0]+'</p>')
                      if(message.password != null)   
                           $('#passwordv').append('<p>'+message.password[0]+'</p>')
-                    if(message.checkbox != null) 
-                          $('#checkboxv').append('<p>'+message.checkbox[0]+'</p>')
+                    if(message.term != null) 
+                          $('#checkboxv').append('<p>'+message.term[0]+'</p>')
 
                    }
      
