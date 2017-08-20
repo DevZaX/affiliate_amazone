@@ -1,5 +1,5 @@
 <?php
-
+  
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
  use Illuminate\Http\UploadedFile;
@@ -72,11 +72,11 @@ public function AfficheCategorie($title){
 
      $categorie = $categorie[0];
      
-     //$listArticle=Article::where('categorie_id',$categorie->id)->get();
+     $listArticle=Article::where('categorie_id',$categorie->id)->orderBy('id','DESC')->limit(6)->get();
 
-     $listArticle = $categorie->articles;
+     //$listArticle = $categorie->articles;
      $listPage=Page::all();
-         return view('article',compact("listArticle","listPage"));
+         return view('article',compact("listArticle","listPage","categorie"));
 }
 
 public function getArticlesAjax(Request $request){
@@ -122,6 +122,56 @@ public function getArticlesAjax(Request $request){
                            echo $out;
              }
 }
+//fin
+
+
+public function ArticleCategorieAjax(Request $request){
+
+             $id = $request->id;
+             $title = $request->title;
+             $categorie = Categorie::where('title_categorie',$title)->first();
+             $listArticle = Article::where('id','<',$id)->where('categorie_id',$categorie->id)->orderBy('id','DESC')->limit(6)->get();
+             $out = '';
+             if(count($listArticle) != 0){
+              foreach($listArticle as $article){
+                            $out = $out .'
+                             <div class="col-sm-4 wow article-div" style="margin-bottom:50px;" >
+            <div class="post-thumb">
+              <a href="#"><img class="img-responsive" src="storage/'.$article->image_article.'" alt="" ></a> 
+              <div class="post-meta">
+                
+                <span><i class="fa fa-heart"></i> 0 Likes</span> 
+              </div>
+             
+            </div>
+            <div class="entry-header" style="height: 120px">
+             <h4 style="float: right;">'.$article->price.'</h4>
+              <h3><a href="'.$article->link.'">'.$article->title_article.'</a></h3>
+
+              
+
+
+              <span class="date">'.$article->created_at.'</span>
+              <span class="cetagory">in <strong>'.$article->categorie->title_categorie.'</strong></span>
+            </div>
+            <div class="entry-content" style="height: 200px">
+              <p>'.$article->description_article.'</p>
+            </div>
+             <div>
+            <a href="'.$article->link.'" style="float:right;width:30%;" class="btn btn-primary" target="_blank">Check Out</a>
+            </div>
+          </div>';
+
+                           }
+
+                           $out = $out.'<center><div class="load-more3 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+          <a  id="read3" class="btn-loadmore" data-id="'.$article->id.'"><i class="fa fa-repeat"></i> Load More</a>
+        </div></center>  ';
+
+                           echo $out;
+             }
+
+}//fin
 
      
 }

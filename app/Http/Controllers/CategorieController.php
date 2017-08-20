@@ -59,4 +59,44 @@ class CategorieController extends Controller
        $categorie->save();
      return redirect('/categories');
      }
+
+
+     public function getCategorieAjax(Request $request){
+             $id = $request->id;
+             $listCategorie = Categorie::where('id','>',$id)->orderBy('id')->limit(6)->get();
+             $out = '';
+             if(count($listCategorie) != 0){
+              foreach($listCategorie as $categorie){
+                            $out = $out .'
+                            <div class="col-sm-4 " style="margin-bottom:50px;">
+          <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="400ms">
+            <div class="folio-image">
+              <img class="img-responsive"  src="storage/'.$categorie->image_categorie.'" alt="" style="width:300px;height:250px;">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>'.$categorie->title_categorie.'</h3>
+                  
+                  </div>
+                  <div class="folio-overview">
+                    <span class="folio-link"><a href="articles/'.$categorie->title_categorie.'" ><i class="fa fa-link"></i></a></span>
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>';
+
+                           }
+
+                           $out = $out.'<center><div class="load-more2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+          <a  id="read2" class="btn-loadmore" data-id="'.$categorie->id.'"><i class="fa fa-repeat"></i>  More Categorie</a>
+        </div></center> ';
+
+                           echo $out;
+             }
+} //fin
 }

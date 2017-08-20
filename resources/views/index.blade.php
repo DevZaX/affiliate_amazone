@@ -40,15 +40,15 @@
         @endforeach
        
        
-        <div class="col-sm-4" style="margin-bottom:50px;">
-          <div class="folio-item wow fadeInLeftBig"   data-wow-duration="1000ms" data-wow-delay="1000ms" style="border:2px solid:red;">
-            <div class="folio-image">
-              <img class="img-responsive" src="images/more.jpg" alt="" style="width:300px;height:250px;">
-            </div>
-           
-          </div>
-        </div>
+      
       </div>
+
+       <center><div class="load-more2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+          <a  id="read2" class="btn-loadmore" data-id="{{$categorie->id}}"><i class="fa fa-repeat"></i>  More Categorie</a>
+        </div></center>
+
+        <div id="readmore2">
+
     </div>
     @else 
      <p>  nothing to show </p>

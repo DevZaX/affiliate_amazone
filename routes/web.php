@@ -80,6 +80,10 @@ Route::get('/pages/{title}','PageController@AffichePage');
 
 Route::post('/getArticlesAjax','ArticleController@getArticlesAjax');
 
+Route::post('/getCategorieAjax','CategorieController@getcategorieAjax');
+
+Route::post('/getArticleCategorieAjax','ArticleController@ArticleCategorieAjax');
+
 
 
  

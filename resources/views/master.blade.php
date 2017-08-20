@@ -154,6 +154,44 @@
   
 </script>
 
+<script>
+    var id = $('#read2').data('id');
+    
+    $('#read2').click(function(){
+             
+        $.ajax({
+                   url:'/getCategorieAjax',
+                   type:'post',
+                   data:{  id:id , _token:'{{csrf_token()}}' },
+                   success:function(d){
+                  
+                                 $('.load-more2').remove();
+                                 $('#readmore2').append(d);
+                   }
+          });
+    });
+  
+</script>
+
+<script>
+    var id = $('#read3').data('id');
+    
+    $('#read3').click(function(){
+             
+        $.ajax({
+                   url:'/getArticleCategorieAjax',
+                   type:'post',
+                   data:{  id:id , _token:'{{csrf_token()}}',title:'{{$categorie->title_categorie}}' },
+                   success:function(d){
+                  
+                                 $('.load-more3').remove();
+                                 $('#readmore3').append(d);
+                   }
+          });
+    });
+  
+</script>
+
 <script type="text/javascript">
     $('#aside').css('display','none');
     $('#drop').mouseenter(function (){
