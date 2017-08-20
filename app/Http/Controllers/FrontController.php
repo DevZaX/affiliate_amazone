@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Categorie;
+use App\Page;
 
 class FrontController extends Controller
 {
     	
 
     	public function index(){
-       $listArticle = Article::all();
-       $listCategorie = Categorie::all();
-       return view('index',compact("listArticle","listCategorie"));
+		       $listArticle = Article::orderBy('id')->limit(6)->get();
+		       $listCategorie = Categorie::all();
+		       $listPage = Page::all();
+		       return view('index',compact("listArticle","listCategorie","listPage"));
      }
 
 }

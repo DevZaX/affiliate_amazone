@@ -47,4 +47,10 @@ class PageController extends Controller
      $page->save();
      return redirect('/pages');
      }
+
+     public function AffichePage($title){
+          $page = Page::where('title_page',$title)->first();
+          $listPage = Page::all();
+          return view('page',compact("page","listPage"));
+     }
 }

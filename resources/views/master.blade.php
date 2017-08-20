@@ -31,13 +31,14 @@
 @include('header')
 
 
+
 @yield('content')
 
 @include('contact')
 
 
 
-<<!-- section5 -->
+<!-- section5 -->
   <footer id="footer">
     <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
       <div class="container text-center">
@@ -92,11 +93,7 @@
   <script type="text/javascript" src='{{asset("js/front/main.js")}}'></script>
     <script type="text/javascript" src='{{asset("js/front/sweetalert.min.js")}}'></script>
 
-<script type="text/javascript">
-  $('#read').click(function(){
-     $('#readmore').css("display","block");
-  });
-</script>
+
 
 <script type="text/javascript">
 $.ajaxSetup({
@@ -136,6 +133,30 @@ $.ajaxSetup({
     });
 </script>
 
+<script>
+    var id = $('#read').data('id');
+    
+    $('#read').click(function(){
+             
+        $.ajax({
+                   url:'/getArticlesAjax',
+                   type:'post',
+                   data:{  id:id , _token:'{{csrf_token()}}' },
+                   success:function(d){
+                  
+                                 $('.load-more').remove();
+                                 $('#readmore').append(d);
+                   }
+          });
+    });
+  
+</script>
 
+<script type="text/javascript">
+    $('#aside').css('display','none');
+    $('#drop').mouseenter(function (){
+      $('#aside').toggle();
+    });
+</script>
 </body>
 </html>

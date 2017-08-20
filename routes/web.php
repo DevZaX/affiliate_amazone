@@ -69,6 +69,13 @@ Route::get('loginAdmin','UserController@loginAdmin');
 
 Route::post('login-admin','UserController@loginAdminAuth');
 
+Route::get('/articles/{title}','ArticleController@AfficheCategorie');
+
+Route::get('/pages/{title}','PageController@AffichePage');
+
+Route::post('/getArticlesAjax','ArticleController@getArticlesAjax');
+
+
 
 
  

@@ -2,21 +2,21 @@
  <header id="home">
     <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
       <div class="carousel-inner">
-        <div class="item active" style="background-image: url(images/slider/4.jpg)">
+        <div class="item active" style="background-image: url({{url('images/slider/4.jpg')}})">
           <div class="caption">
             <h1 class="animated fadeInLeftBig">Welcome to <span>Affiliate Amazon</span></h1>
             <p class="animated fadeInRightBig">The best deals - Here all what you need </p>
             <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a>
           </div>
         </div>
-        <div class="item" style="background-image: url(images/slider/cat.png)">
+        <div class="item" style="background-image: url({{url('images/slider/cat.png')}}">
           <div class="caption">
             <h1 class="animated fadeInLeftBig">Best Article <span>Ever </span></h1>
             <p class="animated fadeInRightBig"> The best deals - Here all what you need </p>
             <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a>
           </div>
         </div>
-        <div class="item" style="background-image: url(images/slider/slide.jpg)">
+        <div class="item" style="background-image: url({{url('images/slider/slide.jpg')}}">
           <div class="caption">
             <h1 class="animated fadeInLeftBig">Get What you<span> need</span></h1>
             <p class="animated fadeInRightBig">The best deals - Here all what you need </p>
@@ -41,11 +41,14 @@
           </button>
 
           <a id="logo" class="navbar-brand" href="{{url('/')}}">
-            <h1><img  src="images/lg1.png" alt="logo" ></h1>
+            <h1><img  src="{{asset('images/lg1.png')}}" alt="logo" ></h1>
           </a>                    
         </div>
         <div class="collapse navbar-collapse">
          <form method="post" action="{{url('/logout')}}" id="formulaire"> 
+         <style type="text/css">
+           .navbar-right{margin-right: 12px;}
+         </style>
           <ul class="nav navbar-nav navbar-right"> 
 
             <li class="scroll menuhover"><a href="#home">Home</a></li>
@@ -73,10 +76,37 @@
                 <a href="#" onclick="document.getElementById('formulaire').submit()">Log Out</a>
             </li> 
            @endif
+
+
+  </li>
   
+  <!-- menu jedid -->
+@if(count($listPage)!=0)
+<li class="scroll menuhover">
+  <a id="drop"> Pages </a>
+</li>
+
+
+<div  style="margin-top:60px;padding-left: 30px;">
+<style type="text/css">
+  #aside{margin-left:0px;background-color: #028FCC; width: 200px;text-align: center;}
+  .list{width: 100px;height: 50px;}
+</style>
+<ul id="aside">
+@foreach($listPage as $page)
+    <li class="list" style="list-style:none ;"><a href="{{url('/pages/'.$page->title_page)}}" style="color:white;text-transform: uppercase;font-size: 14px;font-weight: 600;" >{{$page->title_page}}</a></li>
+ @endforeach
+  </ul>
+</div>
+@endif
+
+
+
           </ul>
           </form>
         </div>
       </div>
     </div><!--/#main-nav-->
   </header>
+
+ 

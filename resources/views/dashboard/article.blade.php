@@ -112,7 +112,7 @@
        <tr>
        <!--Ref article  title Description Price link of article date de publication article image Action-->
        <td><center>{{$article->title_article}}</center></td>
-       <td><center>{{$article->description_article}}</center></td>
+       <td><center><!-- {{$article->description_article}} --></center></td>
        <td><center>{{$article->price}}</center></td>
        <td><center>{{$article->nbre_vu}}</center></td>
           <td ><center><img alt='' src="{{asset('storage/'.$article->image_article)}}" width="75" height="75" /></center></td>

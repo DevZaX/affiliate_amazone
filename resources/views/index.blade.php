@@ -27,7 +27,7 @@
                   
                   </div>
                   <div class="folio-overview">
-                    <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
+                    <span class="folio-link"><a href="{{url('/articles/'.$categorie->title_categorie)}}" ><i class="fa fa-link"></i></a></span>
                    
                   </div>
                 </div>
@@ -147,22 +147,25 @@ w3.slideshow(".nature",1500);
 
 @endforeach
 
-        @endif
+      
         
 
 
-<div id="readmore" style="display:none;">
 
-
-
-</div>
          
 
                       
         </div>
         <div class="load-more wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
-          <a  id="read" class="btn-loadmore"><i class="fa fa-repeat"></i> Load More</a>
-        </div>                
+          <a  id="read" class="btn-loadmore" data-id="{{$article->id}}"><i class="fa fa-repeat"></i> Load More</a>
+        </div>
+
+        <div id="readmore">
+
+
+
+</div>   
+  @endif             
       </div>
     </div>
   </section><!--/#blog-->
