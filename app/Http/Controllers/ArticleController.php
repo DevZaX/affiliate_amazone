@@ -72,7 +72,7 @@ public function AfficheCategorie($title){
 
      $categorie = $categorie[0];
      
-     $listArticle=Article::where('categorie_id',$categorie->id)->orderBy('id','DESC')->limit(6)->get();
+     $listArticle=Article::where('categorie_id',$categorie->id)->orderBy('id','DESC')->paginate(6);
 
      //$listArticle = $categorie->articles;
      $listPage=Page::all();
@@ -137,7 +137,7 @@ public function ArticleCategorieAjax(Request $request){
                             $out = $out .'
                              <div class="col-sm-4 wow article-div" style="margin-bottom:50px;" >
             <div class="post-thumb">
-              <a href="#"><img class="img-responsive" src="storage/'.$article->image_article.'" alt="" ></a> 
+              <a href="#"><img class="img-responsive" src="{{asset("storage/'.$article->image_article.'")}}" alt="" ></a> 
               <div class="post-meta">
                 
                 <span><i class="fa fa-heart"></i> 0 Likes</span> 

@@ -42,10 +42,11 @@
        
       
       </div>
-
+      <div>
        <center><div class="load-more2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
           <a  id="read2" class="btn-loadmore" data-id="{{$categorie->id}}"><i class="fa fa-repeat"></i>  More Categorie</a>
         </div></center>
+        </div>
 
         <div id="readmore2">
 
@@ -154,8 +155,6 @@ w3.slideshow(".nature",1500);
         </div>
 
         <div id="readmore">
-
-
 
 </div>   
   @endif             

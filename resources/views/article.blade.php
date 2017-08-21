@@ -51,17 +51,9 @@
 
 @endforeach
 
-    
+     <center> {{$listArticle->links()}} </center>
         </div>
-       <center>< <div class="load-more3 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
-          <a  id="read3" class="btn-loadmore" data-id="{{$article->id}}"><i class="fa fa-repeat"></i> Load More</a>
-        </div></center>
-
-        <div id="readmore3">
-
-
-
-</div>   
+     
   @endif             
       </div>
     </div>
