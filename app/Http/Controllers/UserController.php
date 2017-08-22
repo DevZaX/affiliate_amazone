@@ -20,6 +20,8 @@ use Session;
 
 use Illuminate\Support\Facades\Hash;
 
+use App\NewsletterManager;
+
 class UserController extends Controller
 {
     public function register(Request $request){
@@ -160,6 +162,29 @@ public function loginAdminAuth(Request $request){
 
 
   
+}
+
+public function subscribe(Request $request){
+
+  $email = $request->input('email');
+
+
+
+  $mailchimp = app('Mailchimp');
+
+
+
+  $newsletterManager = new NewsletterManager($mailchimp);
+
+
+
+
+  $newsletterManager->addEmailToList($email);
+
+
+
+return Redirect()->back();
+
 }
   
 }

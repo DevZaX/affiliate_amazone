@@ -45,7 +45,8 @@
         <div class="social-icons">
 
     <!-- form newsletter-->
-      <form id="main-contact-form" name="contact-form" method="post" action="#">
+      <form id="main-contact-form" name="contact-form" method="post" action="{{url('/subscribe')}}">
+                  {{csrf_field()}}
                   <h2 class="newsletter">Subscribe to our newsletter</h2>
                  <center>
                     <div class="form-group">
