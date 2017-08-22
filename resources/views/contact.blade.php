@@ -12,7 +12,9 @@
         <div class="contact-form wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
           <div class="row">
             <div class="col-sm-6">
-              <form id="main-contact-form" name="contact-form" method="post" action="#">
+              <form  name="contact-form" method="post" action="{{url('/contact')}}">
+
+              {{csrf_field()}}
                 <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                   <div class="col-sm-6">
                     <div class="form-group">
@@ -33,7 +35,10 @@
                   <textarea name="message" id="message" class="form-control form-control1" rows="4" placeholder="Enter your message" required="required"></textarea>
                 </div>                        
                 <div class="form-group">
-                  <button type="submit" class="btn-submit">Send Now</button>
+                   <style>
+                     .my-style-for-submit-btn{width:35%;padding: 15px;}
+                   </style>
+                  <button type="submit" class="btn btn-primary my-style-for-submit-btn">Send Now</button>
                 </div>
               </form>   
             </div>

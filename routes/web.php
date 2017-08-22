@@ -20,6 +20,8 @@ Route::post('/login', 'UserController@check');
 
 Route::post('/logout', 'UserController@logout');
 
+Route::post('/contact', 'UserController@contact');
+
 
 
 

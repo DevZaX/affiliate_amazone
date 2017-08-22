@@ -179,12 +179,17 @@
 <script>
   $('#subscribe').click(function(){
                     var email = $('#email').val();
+                     $('#success-msg').text('');
                     $.ajax({
                                     url:'/subscribe',
                                     type:'post',
                                     data:{email:email,_token:'{{csrf_token()}}'},
                                     success:function(d){
                                         $('#success-msg').append(d);
+                                    },
+                                    error:function(ee){
+                                              var message = ee.responseJSON.message;
+                                             $('#success-msg').append(message.email[0]);
                                     }
                     });
   });

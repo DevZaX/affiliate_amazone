@@ -12,6 +12,8 @@ use Validator;
 
 use DB;
 
+use Mail;
+
 use Illuminate\Support\Facades\Input;
 
 use Illuminate\Support\Facades\Auth;
@@ -166,6 +168,19 @@ public function loginAdminAuth(Request $request){
 
 public function subscribe(Request $request){
 
+         $validator = Validator::make($request->all(), [
+            'email' => 'required|email|max:255'
+        ]);
+
+           if ($validator->fails()) {
+
+             
+              return Response::json(["error"=>true,'message'=>$validator->messages()],400);
+
+
+        }
+
+
   $email = $request->email;
 
 
@@ -179,6 +194,25 @@ public function subscribe(Request $request){
 
 
   echo "Please Confirm Subscription";
+
+}
+
+public function contact( Request  $request){
+
+
+ $name = $request->input('name');
+  $email = $request->input('email');
+  $subject = $request->input('subject ');
+  $message = $request->input('message ');
+
+    $data=array('names'=>$name,'emails'=>$email,'subjects'=>$subject,'messages'=>$message);
+
+  Mail::send('mail',$data,function($msg){
+   $msg->from('groupeG1LSI@gmail.com','lolo');
+    $msg->to('asmabouzmoul214@gmail.com')->subject('hi asma');
+  });
+
+ return Redirect()->back();
 
 }
   
