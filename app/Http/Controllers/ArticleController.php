@@ -113,12 +113,11 @@ public function getArticlesAjax(Request $request){
             </div>
           </div>';
 
+
+
                            }
 
-                           $out = $out.'<div class="load-more wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
-          <a  id="read" class="btn-loadmore" data-id="'.$article->id.'"><i class="fa fa-repeat"></i> Load More</a>
-        </div>  ';
-
+                          $out = $out.'  <input type="hidden"  value="'.$article->id.'" id="identifiant"> ' ;
                            echo $out;
              }
 }

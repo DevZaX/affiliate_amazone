@@ -1,5 +1,12 @@
 @extends('master')
 @section('content')
+
+
+ <header id="home">
+@include('slide')
+
+@include('main-nav')
+  </header>
 <!-- section1 -->
  <section id="portfolio">
     <div class="container">
@@ -38,19 +45,24 @@
         
         
         @endforeach
+
+           <input type="hidden"  value="{{$categorie->id}}" id="identifiant2"> 
        
-       
+          <div id="readmore2">
       
       </div>
-      <div>
+
+
+      
+     
+
+    </div>
+    <div>
        <center><div class="load-more2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
-          <a  id="read2" class="btn-loadmore" data-id="{{$categorie->id}}"><i class="fa fa-repeat"></i>  More Categorie</a>
+          <a  id="read2" class="btn-loadmore" ><i class="fa fa-repeat"></i>  More Categorie</a>
         </div></center>
         </div>
 
-        <div id="readmore2">
-
-    </div>
     @else 
      <p>  nothing to show </p>
 
@@ -120,6 +132,7 @@ w3.slideshow(".nature",1500);
 
 @foreach($listArticle as $article)
           <div class="col-sm-4 wow article-div "  style="margin-bottom:50px;" >
+      
             <div class="post-thumb"  >
               <a href="#"><img class="img-responsive" src="{{asset('storage/'.$article->image_article)}}" alt="" ></a> 
               <div class="post-meta">
@@ -147,14 +160,15 @@ w3.slideshow(".nature",1500);
           </div>
 
 @endforeach
-
+    <input type="hidden"  value="{{$article->id}}" id="identifiant"> 
+ <div id="readmore">
     
         </div>
         <div class="load-more wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
-          <a  id="read" class="btn-loadmore" data-id="{{$article->id}}"><i class="fa fa-repeat"></i> Load More</a>
+          <a  id="read" class="btn-loadmore"><i class="fa fa-repeat"></i> Load More</a>
         </div>
 
-        <div id="readmore">
+       
 
 </div>   
   @endif             

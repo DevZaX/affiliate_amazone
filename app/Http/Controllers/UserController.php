@@ -166,24 +166,19 @@ public function loginAdminAuth(Request $request){
 
 public function subscribe(Request $request){
 
-  $email = $request->input('email');
-
+  $email = $request->email;
 
 
   $mailchimp = app('Mailchimp');
 
 
-
   $newsletterManager = new NewsletterManager($mailchimp);
-
-
 
 
   $newsletterManager->addEmailToList($email);
 
 
-
-return Redirect()->back();
+  echo "Please Confirm Subscription";
 
 }
   

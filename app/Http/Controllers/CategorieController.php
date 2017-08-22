@@ -92,10 +92,8 @@ class CategorieController extends Controller
 
                            }
 
-                           $out = $out.'<div style="margin-top:10px;"><center><div class="load-more2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
-          <a  id="read2" class="btn-loadmore" data-id="'.$categorie->id.'"><i class="fa fa-repeat"></i>  More Categorie</a>
-        </div></center></div> ';
-
+                    
+                          $out = $out.'     <input type="hidden"  value="'.$categorie->id.'" id="identifiant2"> ';
                            echo $out;
              }
 } //fin

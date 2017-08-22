@@ -24,11 +24,13 @@
 
 <body>
 
+
+
   <!--.preloader-->
   <div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
   <!--/.preloader-->
 
-@include('header')
+
 
 
 
@@ -48,12 +50,13 @@
       <form id="main-contact-form" name="contact-form" method="post" action="{{url('/subscribe')}}">
                   {{csrf_field()}}
                   <h2 class="newsletter">Subscribe to our newsletter</h2>
+                  <h3 id="success-msg" style="color: white;"></h3>
                  <center>
                     <div class="form-group">
-                      <input type="email" name="email" class="news" placeholder="Email Address" required="required">
+                      <input id="email" type="email" class="news" placeholder="Email Address" required="required">
                     </div>
                     <div class="form-group">
-                      <button type="submit" class="newsletterbtn">Subscribe</button>
+                      <button id="subscribe" type="button"  class="newsletterbtn">Subscribe</button>
                     </div></center>
               </form>  
     <!-- fin form newsletter -->
@@ -137,35 +140,35 @@
 </script>
 
 <script>
-    var id = $('#read').data('id');
+
     
     $('#read').click(function(){
-             
+               var id= $('#identifiant').val();
         $.ajax({
                    url:'/getArticlesAjax',
                    type:'post',
-                   data:{  id:id , _token:'{{csrf_token()}}' },
+                   data:{  id:id, _token:'{{csrf_token()}}' },
                    success:function(d){
                   
-                                 $('.load-more').remove();
-                                 $('#readmore').append(d);
+                     $('#identifiant').remove();
+                     $('#readmore').append(d);
                    }
           });
     });
   
 </script>
 <script>
-    var id = $('#read2').data('id');
+   
     
     $('#read2').click(function(){
-             
+             var id= $('#identifiant2').val();
         $.ajax({
                    url:'/getCategorieAjaxs',
                    type:'post',
-                   data:{  id:id , _token:'{{csrf_token()}}' },
+                   data:{  id:id, _token:'{{csrf_token()}}' },
                    success:function(d){
                   
-                                 $('.load-more2').remove();
+                                 $('#identifiant2').remove();
                                  $('#readmore2').append(d);
                    }
           });
@@ -173,11 +176,18 @@
   
 </script>
 
-<script type="text/javascript">
-    $('#aside').css('display','none');
-    $('#drop').mouseenter(function (){
-      $('#aside').toggle();
-    });
+<script>
+  $('#subscribe').click(function(){
+                    var email = $('#email').val();
+                    $.ajax({
+                                    url:'/subscribe',
+                                    type:'post',
+                                    data:{email:email,_token:'{{csrf_token()}}'},
+                                    success:function(d){
+                                        $('#success-msg').append(d);
+                                    }
+                    });
+  });
 </script>
 </body>
 </html>
