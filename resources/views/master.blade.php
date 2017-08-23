@@ -9,9 +9,8 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>1Affiliate Amazon</title>
   <link href='{{asset("css/front/bootstrap.min.css")}}' rel="stylesheet">
-  <link href='{{asset("css/front/animate.min.css")}}' rel="stylesheet"> 
   <link href='{{asset("css/front/font-awesome.min.css")}}' rel="stylesheet">
-  <link href='{{asset("css/front/lightbox.css")}}' rel="stylesheet">
+  <!-- <link href='{{asset("css/front/lightbox.css")}}' rel="stylesheet">-->
   <link href='{{asset("css/front/main.css")}}' rel="stylesheet">
   <link id="css-preset" href='{{asset("css/front/preset1.css")}}' rel="stylesheet">
   <link href='{{asset("css/front/responsive.css")}}' rel="stylesheet">
@@ -88,12 +87,12 @@
   <script type="text/javascript" src='{{asset("js/front/jquery.js")}}'></script>
   <script type="text/javascript" src='{{asset("js/front/bootstrap.min.js")}}'></script>
 
-  <script type="text/javascript" src='{{asset("js/front/jquery.inview.min.js")}}'></script>
-  <script type="text/javascript" src='{{asset("js/front/wow.min.js")}}'></script>
-  <script type="text/javascript" src='{{asset("js/front/mousescroll.js")}}'></script>
+  <!--<script type="text/javascript" src='{{asset("js/front/jquery.inview.min.js")}}'></script>-->
+  <!--<script type="text/javascript" src='{{asset("js/front/wow.min.js")}}'></script>-->
+  <!-- <script type="text/javascript" src='{{asset("js/front/mousescroll.js")}}'></script>-->
 
-  <script type="text/javascript" src='{{asset("js/front/jquery.countTo.js")}}'></script>
-  <script type="text/javascript" src='{{asset("js/front/lightbox.min.js")}}'></script>
+  <!--<script type="text/javascript" src='{{asset("js/front/jquery.countTo.js")}}'></script>-->
+  <!--<script type="text/javascript" src='{{asset("js/front/lightbox.min.js")}}'></script>-->
   <script type="text/javascript" src='{{asset("js/front/main.js")}}'></script>
     <script type="text/javascript" src='{{asset("js/front/sweetalert.min.js")}}'></script>
 

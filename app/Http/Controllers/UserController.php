@@ -79,7 +79,7 @@ class UserController extends Controller
      $email= $inputs['email'];
      $password =$inputs['password'];
           if(Auth::attempt(['email'=>$email,'password'=>$password])){
-
+    
             return redirect('/');
          
           }else{
@@ -97,7 +97,9 @@ class UserController extends Controller
     }
 
 public function toAdmin(){
-  return view('dashboard.index');
+  $monFichier = fopen("fichiers/monFichier.txt","r+");
+      $pages_vues = fgets($monFichier);
+  return view('dashboard.admin',compact('pages_vues'));
 }
 
 public function index(){

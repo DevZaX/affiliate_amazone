@@ -116,7 +116,7 @@ w3.slideshow(".nature",1500);
       <div class="row">
 
 
-        <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms" data-wow-delay="300ms">
+        <div class="text-center col-sm-8 col-sm-offset-2 " data-wow-duration="1200ms" data-wow-delay="300ms">
           <h2>what's New</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>
         </div>
@@ -131,7 +131,7 @@ w3.slideshow(".nature",1500);
         @else     
 
 @foreach($listArticle as $article)
-          <div class="col-sm-4 wow article-div "  style="margin-bottom:50px;" >
+          <div class="col-sm-4 article-div "  style="margin-bottom:50px;" >
       
             <div class="post-thumb"  >
               <a href="#"><img class="img-responsive" src="{{asset('storage/'.$article->image_article)}}" alt="" ></a> 
@@ -144,7 +144,13 @@ w3.slideshow(".nature",1500);
             <div class="entry-header" style="height: 120px">
              <h4 style="float: right;">{{$article->price}}</h4>
               <h3><a href="{{$article->link}}">{{$article->title_article}}</a></h3>
-
+      
+      @if(Auth::check())
+      <button style="float: right;" class="btn btn-danger">Save</button>
+      @else
+      <button style="float: right;" type="button" href="#"  data-toggle="modal" data-target="#exampleModal1" class="btn btn-danger" data-whatever="@mdo">Save
+               </button>
+      @endif
               
 
 
@@ -161,16 +167,12 @@ w3.slideshow(".nature",1500);
 
 @endforeach
     <input type="hidden"  value="{{$article->id}}" id="identifiant"> 
- <div id="readmore">
-    
-        </div>
+ <div id="readmore"></div>
+   
+   </div>
         <div class="load-more wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
           <a  id="read" class="btn-loadmore"><i class="fa fa-repeat"></i> Load More</a>
         </div>
-
-       
-
-</div>   
   @endif             
       </div>
     </div>

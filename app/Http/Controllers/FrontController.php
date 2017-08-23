@@ -12,6 +12,12 @@ class FrontController extends Controller
     	
 
     	public function index(){
+    		      $monFichier = fopen("fichiers/monFichier.txt","r+");
+		      $pages_vues = fgets($monFichier);
+		      $pages_vues++;
+		      fseek($monFichier, 0);
+		      fputs($monFichier,$pages_vues);
+		      fclose($monFichier);
 		       $listArticle = Article::orderBy('id','DESC')->limit(6)->get();
 		       $listCategorie = Categorie::orderBy('id')->limit(6)->get();
 		       $listPage = Page::all();

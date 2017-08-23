@@ -33,7 +33,7 @@
 
                           <div class="form-group">
                                 <label for="recipient-name" class="control-label">Title :</label>
-                                <input  required class="form-control" id="message-text" name="title" type="text">
+                                <input  required class="form-control" id="message-text" name="title" type="text" maxlength="20">
                             </div> 
                             <div class="form-group">
                                 <label for="recipient-name" class="control-label">Description :</label>
@@ -169,7 +169,7 @@
 
                          <div class="form-group">
                                 <label for="recipient-name" class="control-label">Title :</label>
-                                <input  required class="form-control" id="message-text" name="title" type="text" value="{{$article->title_article}}">
+                                <input  required class="form-control" maxlength="20"  id="message-text" name="title" type="text" value="{{$article->title_article}}">
                             </div> 
                             <div class="form-group">
                                 <label for="recipient-name" class="control-label">Description :</label>
