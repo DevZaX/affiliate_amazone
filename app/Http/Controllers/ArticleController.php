@@ -6,9 +6,14 @@ use Illuminate\Http\Request;
 
 use DB;
 
+use Auth;
+
+use Redirect;
+
 use App\Article;
 use App\Categorie;
 use App\Page;
+use App\Users_article;
 
 class ArticleController extends Controller
 
@@ -21,7 +26,7 @@ class ArticleController extends Controller
      }
     //ajout
      public function store(Request $request){
-       $article= new Article();
+          $article= new Article();
 	   $article->title_article = $request->input("title");
 	   $article->description_article = $request->input("description");
 	   $article->link = $request->input("link");
@@ -171,6 +176,18 @@ public function ArticleCategorieAjax(Request $request){
              }
 
 }//fin
+
+
+public function saveUser(Request $request){
+  $id = $request->id;
+  $user_article = new Users_article();
+  $user_article->user_id = Auth::user()->id;
+  $user_article->article_id = $id;
+  $user_article->save();
+
+echo "Saved";
+
+}
 
      
 }

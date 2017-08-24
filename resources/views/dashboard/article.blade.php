@@ -33,7 +33,7 @@
 
                           <div class="form-group">
                                 <label for="recipient-name" class="control-label">Title :</label>
-                                <input  required class="form-control" id="message-text" name="title" type="text" maxlength="20">
+                                <input  required class="form-control" id="message-text" name="title" type="text" maxlength="40">
                             </div> 
                             <div class="form-group">
                                 <label for="recipient-name" class="control-label">Description :</label>
@@ -88,14 +88,14 @@
          th{color:white;}
        </style>
 @if(count($listArticle) != 0 )
-       <center> <table  class="table table-bordered table table-hover" style="width:70%">
+       <center> <table  class="table table-bordered table table-hover" style="width:100%">
            <thead>
                 <tr >
-                       <th id="tdcolor" style="width:15%;background-color: RGB(40,96,144); !important  " ><center>title</center></th> 
+                       <th id="tdcolor" style="width:10%;background-color: RGB(40,96,144); !important  " ><center>title</center></th> 
                        <th id="tdcolor" style="width:15%;background-color: RGB(40,96,144); !important  " ><center>description</center></th> 
-                       <th id="tdcolor" style="width:15%;background-color: RGB(40,96,144); !important  " ><center>price</center></th> 
-                       <th id="tdcolor" style="width:15%;background-color: RGB(40,96,144); !important  " ><center>vues</center></th> 
-                       <th id="tdcolor" style="width:30%; background-color: RGB(40,96,144); !important  " ><center>image</center></th> 
+                       <th id="tdcolor" style="width:6%;background-color: RGB(40,96,144); !important  " ><center>price</center></th> 
+                       <th id="tdcolor" style="width:6%;background-color: RGB(40,96,144); !important  " ><center>vues</center></th> 
+                       <th id="tdcolor" style="width:6%; background-color: RGB(40,96,144); !important  " ><center>image</center></th> 
                        <th id="tdcolor" style="width:5%; background-color: RGB(40,96,144); !important  " ><center>Action</center> </th>
 
 
@@ -112,7 +112,7 @@
        <tr>
        <!--Ref article  title Description Price link of article date de publication article image Action-->
        <td><center>{{$article->title_article}}</center></td>
-       <td><center><!-- {{$article->description_article}} --></center></td>
+       <td><center>{{$article->description_article}} </center></td>
        <td><center>{{$article->price}}</center></td>
        <td><center>{{$article->nbre_vu}}</center></td>
           <td ><center><img alt='' src="{{asset('storage/'.$article->image_article)}}" width="75" height="75" /></center></td>
@@ -169,7 +169,7 @@
 
                          <div class="form-group">
                                 <label for="recipient-name" class="control-label">Title :</label>
-                                <input  required class="form-control" maxlength="20"  id="message-text" name="title" type="text" value="{{$article->title_article}}">
+                                <input  required class="form-control" maxlength="40"  id="message-text" name="title" type="text" value="{{$article->title_article}}">
                             </div> 
                             <div class="form-group">
                                 <label for="recipient-name" class="control-label">Description :</label>

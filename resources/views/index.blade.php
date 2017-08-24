@@ -131,6 +131,9 @@ w3.slideshow(".nature",1500);
         @else     
 
 @foreach($listArticle as $article)
+
+
+
           <div class="col-sm-4 article-div "  style="margin-bottom:50px;" >
       
             <div class="post-thumb"  >
@@ -142,15 +145,19 @@ w3.slideshow(".nature",1500);
              
             </div>
             <div class="entry-header" style="height: 120px">
-             <h4 style="float: right;">{{$article->price}}</h4>
+             
               <h3><a href="{{$article->link}}">{{$article->title_article}}</a></h3>
-      
-      @if(Auth::check())
-      <button style="float: right;" class="btn btn-danger">Save</button>
+              @if(Auth::check())
+      <button id="save_{{$article->id}}" type="button"   onclick="save({{$article->id}})" style="float: right;" class="btn btn-danger">Save</button>
+
       @else
       <button style="float: right;" type="button" href="#"  data-toggle="modal" data-target="#exampleModal1" class="btn btn-danger" data-whatever="@mdo">Save
                </button>
       @endif
+
+              <h4 >{{$article->price}}</h4>
+      
+      
               
 
 
@@ -160,10 +167,11 @@ w3.slideshow(".nature",1500);
             <div class="entry-content" style="height: 200px">
               <p>{{$article->description_article}}</p>
             </div>
-             <div>
+             <div style="margin-top: -55px;">
             <a href="{{$article->link}}" style="float:right;width:30%;position: relative;" class="btn btn-primary" target="_blank">Check Out</a>
             </div>
           </div>
+    
 
 @endforeach
     <input type="hidden"  value="{{$article->id}}" id="identifiant"> 

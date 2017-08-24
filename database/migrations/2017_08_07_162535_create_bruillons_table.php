@@ -19,7 +19,7 @@ class CreateBruillonsTable extends Migration
             $table->text('contenu_bruillon');
            $table->boolean('Etat');
            $table->integer('page_id')->unsigned();
-            $table->foreign('page_id')->references('id')->on('pages');
+            $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -34,6 +34,9 @@ class CategorieController extends Controller
 
      public function destroy(Request $request,$id){
      $categorie=Categorie::find($id);
+                 foreach ($categorie->articles as  $article) {
+                   $article->delete();
+                 }
      $categorie->delete();
      return redirect('/categories');
      }    

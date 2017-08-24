@@ -88,6 +88,8 @@ Route::post('/getArticleCategorieAjax','ArticleController@ArticleCategorieAjax')
 
 Route::post('/subscribe','UserController@subscribe');
 
+Route::post('/save','ArticleController@saveUser');
+
 
 
  

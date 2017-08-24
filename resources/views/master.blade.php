@@ -193,5 +193,22 @@
                     });
   });
 </script>
+
+<script>
+     save = function(x){
+
+               var idBtn = "save_"+x;
+               $.ajax({
+                url:'/save',
+                type:'post',
+                data:{id:x,_token:'{{csrf_token()}}'},
+                success:function(d){
+                     $('#'+idBtn).text(d);
+                }
+               });
+             
+     }
+
+</script>
 </body>
 </html>

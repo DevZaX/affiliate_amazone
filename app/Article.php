@@ -14,4 +14,5 @@ class Article extends Model
          	public function categorie(){
 				     return $this->belongsTo('App\Categorie');
 				}
+
 }
