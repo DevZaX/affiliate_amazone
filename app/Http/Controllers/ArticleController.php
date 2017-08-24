@@ -180,12 +180,12 @@ public function ArticleCategorieAjax(Request $request){
 
 public function saveUser(Request $request){
   $id = $request->id;
-  $user_article = new Users_article();
+
+     $user_article = new Users_article();
   $user_article->user_id = Auth::user()->id;
   $user_article->article_id = $id;
   $user_article->save();
-
-echo "Saved";
+  echo "Saved";
 
 }
 

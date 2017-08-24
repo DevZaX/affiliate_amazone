@@ -148,7 +148,20 @@ w3.slideshow(".nature",1500);
              
               <h3><a href="{{$article->link}}">{{$article->title_article}}</a></h3>
               @if(Auth::check())
-      <button id="save_{{$article->id}}" type="button"   onclick="save({{$article->id}})" style="float: right;" class="btn btn-danger">Save</button>
+
+                              @if(Auth::user()->type=="admin")
+
+                                <button type="button"    style="float: right;" class="btn btn-danger disabled">Saved</button>
+
+                              @else
+
+                                                                                                      @if($article->isSaved)
+                                                                                         <button type="button"    style="float: right;" class="btn btn-danger">Saved</button>
+                                                                                                      @else
+                                                                                         <button id="save_{{$article->id}}" type="button"   onclick="save({{$article->id}})" style="float: right;" class="btn btn-danger">Save</button>
+                                                                                                      @endif
+                                 @endif                                                                     
+     
 
       @else
       <button style="float: right;" type="button" href="#"  data-toggle="modal" data-target="#exampleModal1" class="btn btn-danger" data-whatever="@mdo">Save
