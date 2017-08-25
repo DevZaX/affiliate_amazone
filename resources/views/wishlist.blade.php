@@ -117,12 +117,6 @@ ul.dropdown-menu:hover {
       <div class="row">
 
 
-        <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms" data-wow-delay="300ms">
-          <h2>{{$categorie->title_categorie}}</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>
-        </div>
-      </div>
-
 
       <div class="blog-posts">
         <div class="row">
@@ -137,16 +131,19 @@ ul.dropdown-menu:hover {
               <a href="#"><img class="img-responsive" src="{{asset('storage/'.$article->image_article)}}" alt="" ></a> 
               <div class="post-meta">
                 
-                <span><i class="fa fa-heart"></i> 0 Likes</span> 
+                <span><i class="fa fa-heart"></i> {{$article->nbre_vu}} Likes</span> 
               </div>
              
             </div>
             <div class="entry-header" style="height: 120px">
              <h4 style="float: right;">{{$article->price}}</h4>
               <h3><a href="{{$article->link}}">{{$article->title_article}}</a></h3>
-
-              
-
+<form action="{{ url('/remove')}}" method="post" >
+{{ csrf_field() }}
+{{ method_field('DELETE') }}
+<input type="hidden" name="id" value="{{  $article->id }}">
+                  <button type="submit"    style="float: right;" class="btn btn-danger ">Remove</button>
+</form>
 
               <span class="date">{{$article->created_at}}</span>
               <span class="cetagory">in <strong>{{$article->categorie->title_categorie}}</strong></span>
@@ -161,7 +158,9 @@ ul.dropdown-menu:hover {
 
 @endforeach
 
-     <center> {{$listArticle->links()}} </center>
+
+<center>{{$listArticle->links()}}</center>
+
         </div>
      
   @endif             

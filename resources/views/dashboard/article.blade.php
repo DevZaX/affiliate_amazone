@@ -88,7 +88,7 @@
          th{color:white;}
        </style>
 @if(count($listArticle) != 0 )
-       <center> <table  class="table table-bordered table table-hover" style="width:100%">
+       <center> <table id="data"  class="table table-bordered table table-hover" style="width:100%">
            <thead>
                 <tr >
                        <th id="tdcolor" style="width:10%;background-color: RGB(40,96,144); !important  " ><center>title</center></th> 

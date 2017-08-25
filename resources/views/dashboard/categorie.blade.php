@@ -62,7 +62,7 @@
          th{color:white;}
        </style>
 @if(count($listCategorie) != 0 )
-       <center> <table  class="table table-bordered table table-hover" style="width:70%">
+       <center> <table id="data" class="table table-bordered table table-hover" style="width:70%">
            <thead>
                 <tr >
                        <th id="tdcolor" style="width:15%;background-color: RGB(40,96,144); !important  " ><center>title</center></th> 

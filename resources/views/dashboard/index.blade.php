@@ -9,6 +9,9 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href='{{asset("css/back/bootstrap.min.css")}}'>
+
+    <link rel="stylesheet" href='{{asset("css/back/dataTables.bootstrap.min.css")}}'>
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href='{{asset("css/back/font-awesome.min.css")}}'>
   <!-- Ionicons -->
@@ -69,6 +72,8 @@
 <!-- jQuery 3 -->
 <script src='{{asset("js/back/jquery.min.js")}}'></script>
 
+<script src='{{asset("js/back/dataTables.bootstrap.min.js")}}'></script>
+<script src='{{asset("js/back/jquery.dataTables.min.js")}}'></script>
 
 <!-- Bootstrap 3.3.7 -->
 <script src='{{asset("js/back/bootstrap.min.js")}}'></script>

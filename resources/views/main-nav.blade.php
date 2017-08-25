@@ -27,7 +27,7 @@
 
          @if(Auth::check())
              @if(Auth::user()->type == "client")
-             <li > <a href="#"> My Wishlist </a></li>
+             <li > <a href="{{url('/wishlist')}}"> My Wishlist </a></li>
              @endif
 
          @else    
@@ -78,16 +78,23 @@ ul.dropdown-menu:hover {
               
               <ul class="dropdown-menu" class="aaa">
                @foreach($listPage as $page)
-                 <li><a href="{{url('/pages/'.$page->title_page)}}" style="padding-top: 0px;  padding-bottom: 7px;" href="#">{{$page->title_page}}</a></li>
+                 <li ><a href="{{url('/pages/'.$page->title_page)}}" style="padding-top: 0px;  padding-bottom: 7px;" href="#">{{$page->title_page}}</a></li>
                 @endforeach
               </ul>
     </li>
     @endif
 
-
-
+    </form>
+    <form style="float: right;" action="{{url('/search')}}" method="post">
+<style>
+  .search-input{
+        margin-top: 24px;
+  }
+</style>
+<li><div class="search-input">{{csrf_field()}}<input required type="text" placeholder="Search" name="search"><button type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> </li></div>
+</form>
           </ul>
-          </form>
-        </div>
+      
+
       </div>
     </div><!--/#main-nav-->

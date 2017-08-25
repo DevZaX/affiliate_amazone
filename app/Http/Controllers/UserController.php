@@ -24,6 +24,14 @@ use Illuminate\Support\Facades\Hash;
 
 use App\NewsletterManager;
 
+use App\Users_article;
+
+use App\Article;
+
+use App\Page;
+
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 class UserController extends Controller
 {
     public function register(Request $request){
@@ -211,11 +219,53 @@ public function contact( Request  $request){
 
   Mail::send('mail',$data,function($msg){
    $msg->from('groupeG1LSI@gmail.com','lolo');
-    $msg->to('asmabouzmoul214@gmail.com')->subject('hi asma');
+    $msg->to('zakaria_aboud@hotmail.com')->subject('Nouveau Mail');
   });
 
  return Redirect()->back();
 
+}
+
+public function lister(Request $request){
+
+  
+  $list = Users_article::where('user_id',Auth::user()->id)->get();
+  $listArticle = [];
+
+  $listPage = Page::all();
+
+  foreach ($list as $item) {
+       $id_article = $item->article_id;
+       $article = Article::find($id_article);
+       $listArticle[] = $article;
+  }
+
+  $listArticle=array_reverse ($listArticle);
+
+  $currentPage = LengthAwarePaginator::resolveCurrentPage();
+ 
+        // Create a new Laravel collection from the array data
+        $itemCollection = collect($listArticle);
+ 
+        // Define how many items we want to be visible in each page
+        $perPage = 6;
+ 
+        // Slice the collection to get the items to display in current page
+        $currentPageItems = $itemCollection->slice(($currentPage * $perPage) - $perPage, $perPage)->all();
+ 
+        // Create our paginator and pass it to the view
+        $paginatedItems= new LengthAwarePaginator($currentPageItems , count($itemCollection), $perPage);
+ 
+        // set url path for generted links
+        $paginatedItems->setPath($request->url());
+  
+  return view('wishlist',["listArticle"=>$paginatedItems,"listPage"=>$listPage]);
+}
+
+public function remove(Request $request){
+     $user_article = Users_article::where('user_id',Auth::user()->id)->where('article_id',$request->id)->first();
+     $user_article->delete();
+     return Redirect()->back();
 }
   
 }

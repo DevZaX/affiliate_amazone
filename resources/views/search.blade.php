@@ -115,7 +115,7 @@ ul.dropdown-menu:hover {
 
 
           </ul>
-
+    
         </div>
       </div>
     </div><!--/#main-nav-->
@@ -127,12 +127,7 @@ ul.dropdown-menu:hover {
       <div class="row">
 
 
-        <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms" data-wow-delay="300ms">
-          <h2>{{$categorie->title_categorie}}</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>
-        </div>
-      </div>
-
+       
 
       <div class="blog-posts">
         <div class="row">

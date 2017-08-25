@@ -92,6 +92,10 @@ Route::post('/save','ArticleController@saveUser');
 
 
 
+Route::get('/wishlist','UserController@lister');
 
+Route::post('/search','ArticleController@search');
+
+Route::delete('/remove','UserController@remove');
 
  

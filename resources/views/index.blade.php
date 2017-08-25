@@ -140,7 +140,7 @@ w3.slideshow(".nature",1500);
               <a href="#"><img class="img-responsive" src="{{asset('storage/'.$article->image_article)}}" alt="" ></a> 
               <div class="post-meta">
                 
-                <span><i class="fa fa-heart"></i> 0 Likes</span> 
+                <span><i class="fa fa-heart"></i> {{$article->nbre_vu}} Likes</span> 
               </div>
              
             </div>
