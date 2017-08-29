@@ -3,6 +3,8 @@
 *******Typography******
 **************************/
 
+
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
@@ -1012,5 +1014,12 @@ ul.address {
 .article-div{
     height:700px;
 }
+.about-title{
+  margin-top: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+
 
 

@@ -38,10 +38,6 @@
 
   
 
-      <section class="content">
-
-      <!-- Default box -->
-      <div class="box">
         @yield('content')
 
       </div>

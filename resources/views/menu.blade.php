@@ -4,7 +4,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>1Affiliate Amazon</title>
+  <title>@yield('title')</title>
   <link href='{{asset("css/front/bootstrap.min.css")}}' rel="stylesheet">
   <link href='{{asset("css/front/animate.min.css")}}' rel="stylesheet"> 
   <link href='{{asset("css/front/font-awesome.min.css")}}' rel="stylesheet">

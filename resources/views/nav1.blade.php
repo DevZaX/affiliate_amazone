@@ -1,5 +1,19 @@
+ <header >
+
+<style type="text/css">
+  .main-nav1{
+    background-color: #028fcc;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+     z-index: 2000;
+
+  }
+
+
+</style>
     <!--/#home-slider-->
-    <div class="main-nav" style="margin-bottom:-60px;">
+    <div class="main-nav1" style="margin-bottom:-60px">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -9,11 +23,9 @@
             <span class="icon-bar"></span>
           </button>
 
-         <!--<a  class="navbar-brand" href="{{url('/')}}">-->
-          
- 
-           <img  id="logo" src="{{asset('images/lg1.png')}}" alt="logo" >
-          <!--</a>   -->                 
+          <a id="logo" class="navbar-brand" href="{{url('/')}}">
+            <h1><img  src="{{asset('images/lg1.png')}}" alt="logo" ></h1>
+          </a>                    
         </div>
         <div class="collapse navbar-collapse">
          <form method="post" action="{{url('/logout')}}" id="formulaire"> 
@@ -22,14 +34,12 @@
          </style>
           <ul class="nav navbar-nav navbar-right"> 
 
-           <li><a href="#home">Home</a></li>
-            <li ><a href="#portfolio">Categories</a></li>               
-            <li ><a href="#services">Articles</a></li>
-            <li ><a href="{{url('/about')}}">About Us</a></li> 
+           <li><a href="{{url('/')}}">Home</a></li>          
+               <li ><a href="{{url('/about')}}">About Us</a></li> 
 
          @if(Auth::check())
              @if(Auth::user()->type == "client")
-             <li > <a href="{{url('/wishlist')}}"> My Wishlist </a></li>
+             <li > <a href="#"> My Wishlist </a></li>
              @endif
 
          @else    
@@ -80,25 +90,27 @@ ul.dropdown-menu:hover {
               
               <ul class="dropdown-menu" class="aaa">
                @foreach($listPage as $page)
-                 <li ><a href="{{url('/pages/'.$page->title_page)}}" style="padding-top: 0px;  padding-bottom: 7px;" href="#">{{$page->title_page}}</a></li>
+                 <li><a href="{{url('/pages/'.$page->title_page)}}" style="padding-top: 0px;  padding-bottom: 7px;" href="#">{{$page->title_page}}</a></li>
                 @endforeach
               </ul>
     </li>
     @endif
+</form>
 
     </form>
     <form style="float: right;" action="{{url('/search')}}" method="post">
 <style>
   .search-input{
         margin-top: 24px;
-        padding: 5px;
   }
-
 </style>
-<li><div class="search-input">{{csrf_field()}}<input required type="text" placeholder="Search" name="search"><button type="submit" id="btns"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> </li></div>
+<li><div class="search-input">{{csrf_field()}}<input required type="text" placeholder="Search" name="search"><button type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> </li></div>
 </form>
-          </ul>
-      
 
+
+          </ul>
+
+        </div>
       </div>
     </div><!--/#main-nav-->
+  </header>

@@ -27,16 +27,17 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src='{{asset("images/admin.png")}}' class="user-image" alt="User Image">
-              <span class="hidden-xs" style="margin-right:10px;">Khalil</span>
+              <span class="hidden-xs" style="margin-right:10px;">Admin</span>
             </a>
             <ul class="dropdown-menu">
               
               <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
+              
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                <form id="frm" action="{{url('/logout')}}" method="post">
+                  {{ csrf_field() }}
+                  <a onclick='document.getElementById("frm").submit()' class="btn btn-default btn-flat">Sign out</a>
+                  </form>
                 </div>
               </li>
             </ul>
@@ -96,11 +97,7 @@
             <li><a href="{{url('/pages')}}"><i class="fa fa-circle-o"></i> Pages</a></li>
           </ul>
         </li>
-        <li >
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>comments</span>
-          </a>
-        </li>
+   
         
       </ul>
     </section>
@@ -108,16 +105,3 @@
   </aside>
 
   <!-- =============================================== -->
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        dashboard
-
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      </ol>
-    </section>

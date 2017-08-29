@@ -1,5 +1,10 @@
 @extends('master')
+
+@section('title','Affiliate Amazone | page')
+
 @section('content')
+
+@include('nav1')
 
     <section>
 

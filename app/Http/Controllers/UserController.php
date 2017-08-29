@@ -65,6 +65,18 @@ class UserController extends Controller
           $user->email = $inputs['email'];
           $user->password = Hash::make($inputs['password']);
           $user->save();
+          
+  $email = $request->email;
+
+
+  $mailchimp = app('Mailchimp');
+
+
+  $newsletterManager = new NewsletterManager($mailchimp);
+
+
+  $newsletterManager->addEmailToList($email);
+
         
    
            
@@ -101,7 +113,7 @@ class UserController extends Controller
 
     public function logout(){
      Auth::logout();
-     return redirect('/');
+     return Redirect()->back();
     }
 
 public function toAdmin(){
@@ -266,6 +278,11 @@ public function remove(Request $request){
      $user_article = Users_article::where('user_id',Auth::user()->id)->where('article_id',$request->id)->first();
      $user_article->delete();
      return Redirect()->back();
+}
+
+public function about(){
+  $listPage = Page::all();
+  return view('about',compact("listPage"));
 }
   
 }

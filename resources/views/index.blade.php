@@ -1,4 +1,6 @@
 @extends('master')
+
+@section('title','Affiliate Amazone | Home page')
 @section('content')
 
 

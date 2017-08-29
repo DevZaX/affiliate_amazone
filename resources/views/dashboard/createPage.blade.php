@@ -2,6 +2,23 @@
 
 @section('content')
 
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+    <div class="chmn">
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ url('/create') }}">Create Page</a></li>
+      </ol>
+      </div>
+    </section>
+
+      <section class="content">
+
+      <!-- Default box -->
+      <div class="box">
+
     <style>
         .formulaire{padding-top: 20px;}
         label{font-size: 1.2em;font-family: 'Raleway', sans-serif;}

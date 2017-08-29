@@ -98,4 +98,7 @@ Route::post('/search','ArticleController@search');
 
 Route::delete('/remove','UserController@remove');
 
+Route::get('/about','UserController@about');
+
+
  
