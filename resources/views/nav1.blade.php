@@ -23,9 +23,9 @@
             <span class="icon-bar"></span>
           </button>
 
-          <a id="logo" class="navbar-brand" href="{{url('/')}}">
-            <h1><img  src="{{asset('images/lg1.png')}}" alt="logo" ></h1>
-          </a>                    
+
+        <img style="margin-top: 7px;"  src="{{asset('images/lg1.png')}}" alt="logo" >
+
         </div>
         <div class="collapse navbar-collapse">
          <form method="post" action="{{url('/logout')}}" id="formulaire"> 

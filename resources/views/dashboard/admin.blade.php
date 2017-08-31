@@ -16,8 +16,14 @@
 
       <!-- Default box -->
       <div class="box">
+<style type="text/css">
+  .main{width: 500px;height: 500px;}
+</style>
+<div class="main">
 
-<h2>Le nombre de vue:{{$pages_vues}}</h2>
+<iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR31TTWo5Iafc_5Gdr8FK3hQQutbkkX2a1WkmTlh7RE8Jiaap6vjpLgtnF-oR5xS9BLYCcrnmwJS97h/pubchart?oid=1473804679&amp;format=interactive"></iframe>
+
+</div>
 
 
 

@@ -12,7 +12,7 @@
          <!--<a  class="navbar-brand" href="{{url('/')}}">-->
           
  
-           <img  id="logo" src="{{asset('images/lg1.png')}}" alt="logo" >
+           <img style="margin-top: 7px;" id="logo" src="{{asset('images/lg1.png')}}" alt="logo" >
           <!--</a>   -->                 
         </div>
         <div class="collapse navbar-collapse">

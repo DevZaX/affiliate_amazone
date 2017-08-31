@@ -169,7 +169,7 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
-        Spatie\LaravelAnalytics\LaravelAnalyticsServiceProvider::class,
+      
   
 
         Skovmand\Mailchimp\MailchimpServiceProvider::class,
@@ -235,7 +235,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Analytics' => Spatie\LaravelAnalytics\LaravelAnalyticsFacade::class
+
 
       
 

@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Middleware\AuthAdmin;
 
 /*
@@ -99,6 +100,12 @@ Route::post('/search','ArticleController@search');
 Route::delete('/remove','UserController@remove');
 
 Route::get('/about','UserController@about');
+
+Route::get('/data',function(){
+
+	dd($analyticsData = Analytics::getVisitorsAndPageViews(7)   );
+
+});
 
 
  
